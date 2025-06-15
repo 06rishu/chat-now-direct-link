@@ -122,7 +122,7 @@ const Index = () => {
       {/* Live Support Card */}
       <section className="container mx-auto px-4 mb-8">
         <VideoCallCard
-          profileImage="https://images.unsplash.com/photo-1494790108755-2616b612b647?w=100&h=100&fit=crop&crop=face"
+          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
           name="Live Support"
           status="Available 24/7"
           videoCallLink="https://www.google.com"
@@ -240,7 +240,7 @@ const Index = () => {
       {/* Third Video Call Card - Premium */}
       <section className="container mx-auto px-4 mb-8">
         <VideoCallCard
-          profileImage="https://images.unsplash.com/photo-1494790108755-2616b612b647?w=100&h=100&fit=crop&crop=face"
+          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
           name="Sarah Wilson"
           status="Premium Expert Support"
           videoCallLink="https://www.google.com"
