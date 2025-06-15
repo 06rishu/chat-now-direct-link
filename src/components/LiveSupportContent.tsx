@@ -38,4 +38,3 @@ const LiveSupportContent = ({ agent }: { agent: Agent }) => (
 );
 
 export default LiveSupportContent;
-
