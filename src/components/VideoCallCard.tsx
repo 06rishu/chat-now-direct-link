@@ -65,14 +65,14 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
       <div className="flex w-full space-x-3">
         <button
           onClick={handleRoute}
-          className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md"
+          className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
         >
           <i className="fas fa-video mr-2"></i>
           Start Video Call
         </button>
         <button
           onClick={handleRoute}
-          className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md"
+          className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
         >
           <i className="fas fa-arrow-right mr-2"></i>
           Next
