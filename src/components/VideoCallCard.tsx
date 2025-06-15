@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +17,7 @@ interface VideoCallCardProps {
     reviews?: number;
   };
   nextButtonHandler?: () => void;
+  prevButtonHandler?: () => void;
 }
 
 const VideoCallCard: React.FC<VideoCallCardProps> = ({
@@ -25,6 +27,7 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   variant = 'default',
   stats,
   nextButtonHandler,
+  prevButtonHandler,
 }) => {
   const navigate = useNavigate();
 
@@ -70,13 +73,24 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
           <i className="fas fa-video mr-2"></i>
           Start Video Call
         </button>
-        <button
-          onClick={nextButtonHandler}
-          className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
-        >
-          <i className="fas fa-arrow-right mr-2"></i>
-          Next
-        </button>
+        <div className="flex gap-2 flex-1">
+          {prevButtonHandler && (
+            <button
+              onClick={prevButtonHandler}
+              className="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
+            >
+              <i className="fas fa-arrow-left mr-2"></i>
+              Prev
+            </button>
+          )}
+          <button
+            onClick={nextButtonHandler}
+            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
+          >
+            <i className="fas fa-arrow-right mr-2"></i>
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
