@@ -118,7 +118,7 @@
                 </div>
                 <div class="bg-gray-50 p-4 h-32 flex items-center justify-center">
                     <div class="bg-green-100 text-green-800 px-4 py-2 rounded-lg text-sm">
-                        <i class="fas fa-comments mr-2"></i>Chat directly without saving number! 💬
+                        <i class="fas fa-comments mr-2"></i>Chat directly without saving number! <i class="fas fa-comments"></i>
                     </div>
                 </div>
             </div>
@@ -127,16 +127,37 @@
 
     <!-- Second Video Call Card -->
     <section class="container mx-auto px-4 mb-8">
-        <div class="max-w-sm mx-auto bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl shadow-lg p-6 text-white">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-video text-purple-500 text-2xl"></i>
+        <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face" 
+                             alt="Alex Profile" 
+                             class="w-12 h-12 rounded-full object-cover">
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white animate-pulse-green"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Alex</h3>
+                        <p class="text-sm text-blue-600 flex items-center">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+                            Technical Support 24/7
+                        </p>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold mb-2">Premium Video Support</h3>
-                <p class="text-sm opacity-90 mb-4">Get instant video assistance from our experts</p>
+                <div class="text-right">
+                    <div class="text-xs text-gray-500">Available Now</div>
+                </div>
+            </div>
+            <div class="flex space-x-3">
                 <button onclick="window.open('https://www.google.com', '_blank')" 
-                        class="bg-white text-purple-600 hover:bg-gray-100 py-2 px-6 rounded-full font-semibold transition-colors">
-                    <i class="fas fa-video mr-2"></i>Start Video Call
+                        class="flex-1 bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-lg flex items-center justify-center text-sm font-medium transition-colors">
+                    <i class="fas fa-video mr-2"></i>
+                    Video Call
+                </button>
+                <button onclick="window.open('https://www.google.com', '_blank')" 
+                        class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg flex items-center justify-center text-sm font-medium transition-colors">
+                    <i class="fas fa-arrow-right mr-2"></i>
+                    Next
                 </button>
             </div>
         </div>
@@ -223,22 +244,70 @@
         </div>
     </section>
 
-    <!-- Third Video Call Card -->
+    <!-- Third Video Call Card - Enhanced -->
     <section class="container mx-auto px-4 mb-8">
-        <div class="max-w-lg mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-lg p-8 text-white">
-            <div class="flex items-center space-x-4">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face" 
-                         alt="Support Agent" 
-                         class="w-16 h-16 rounded-full object-cover border-4 border-white">
-                    <div class="absolute -top-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-white"></div>
+        <div class="max-w-xl mx-auto bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl p-8 text-white relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-20 h-20 bg-white rounded-full -translate-x-10 -translate-y-10"></div>
+                <div class="absolute bottom-0 right-0 w-32 h-32 bg-white rounded-full translate-x-16 translate-y-16"></div>
+            </div>
+            
+            <div class="relative z-10">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b647?w=80&h=80&fit=crop&crop=face" 
+                                 alt="Sarah Profile" 
+                                 class="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg">
+                            <div class="absolute -top-1 -right-1 w-6 h-6 bg-green-400 rounded-full border-3 border-white flex items-center justify-center">
+                                <i class="fas fa-video text-white text-xs"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Sarah Wilson</h3>
+                            <p class="text-sm opacity-90 flex items-center">
+                                <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                                Premium Expert Support
+                            </p>
+                            <div class="flex items-center mt-1">
+                                <div class="flex text-yellow-300 mr-2">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs opacity-75">4.9/5 (1,247 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs opacity-75">Response Time</div>
+                        <div class="text-sm font-semibold text-green-300">< 30 seconds</div>
+                    </div>
                 </div>
-                <div class="flex-1">
-                    <h3 class="text-xl font-bold">Expert Video Consultation</h3>
-                    <p class="text-sm opacity-90">Connect with our technical experts instantly</p>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-6">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="opacity-90">Active Sessions Today</span>
+                        <span class="font-bold text-green-300">2,847</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm mt-2">
+                        <span class="opacity-90">Satisfaction Rate</span>
+                        <span class="font-bold text-green-300">99.2%</span>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3">
                     <button onclick="window.open('https://www.google.com', '_blank')" 
-                            class="mt-3 bg-white text-blue-600 hover:bg-gray-100 py-2 px-4 rounded-lg font-semibold transition-colors text-sm">
-                        <i class="fas fa-video mr-2"></i>Join Video Call
+                            class="flex-1 bg-white text-indigo-600 hover:bg-gray-100 py-3 px-6 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-video mr-2"></i>
+                        Start Video Call
+                    </button>
+                    <button onclick="window.open('https://www.google.com', '_blank')" 
+                            class="bg-white/20 hover:bg-white/30 backdrop-blur-sm py-3 px-4 rounded-xl transition-all duration-300 border border-white/30">
+                        <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
@@ -363,7 +432,7 @@
                 The easiest way to WhatsApp direct chat in India
             </p>
             <div class="text-xs text-gray-500 border-t border-gray-700 pt-4">
-                <p class="mb-2"><i class="fas fa-flag-usa mr-2"></i>© 2024 Wa Me 91. Made in India 🇮🇳</p>
+                <p class="mb-2"><i class="fas fa-flag mr-2"></i><i class="fas fa-heart text-red-500 mx-1"></i> 2024 Wa Me 91. Made in India <i class="fas fa-flag"></i></p>
                 <p class="text-yellow-300">
                     <strong>Note:</strong> This is not affiliated with WhatsApp Inc. This is an independent tool.
                 </p>
