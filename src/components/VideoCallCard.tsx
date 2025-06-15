@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -34,8 +33,8 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 border border-green-200 min-h-[320px]">
-      <div className="flex flex-col items-center">
+    <div className="max-w-xl mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 border border-green-200 min-h-[320px] w-full sm:p-8 p-4">
+      <div className="flex flex-col items-center w-full">
         <div className="relative mb-2">
           <img
             src={profileImage}
@@ -56,14 +55,14 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
           {status}
         </p>
         {stats && (
-          <div className="flex gap-3 text-xs text-gray-600 mb-2">
+          <div className="flex flex-wrap gap-3 text-xs text-gray-600 mb-2 justify-center">
             <span>Sessions: <span className="font-bold">{stats.activeSessions}</span></span>
             <span>✨ {stats.satisfactionRate}</span>
             <span>⏱ {stats.responseTime}</span>
           </div>
         )}
       </div>
-      <div className="flex w-full space-x-3">
+      <div className="flex w-full flex-col sm:flex-row gap-3">
         <button
           onClick={handleRoute}
           className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
