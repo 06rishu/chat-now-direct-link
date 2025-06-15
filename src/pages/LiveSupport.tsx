@@ -47,7 +47,7 @@ const Footer = () => (
 );
 
 const LiveSupport = () => {
-  // Only show first agent ("Natasha"), consistent with agent pages
+  // Natasha is agent 1 and should be the default on main /live-support page
   const agent = {
     name: "Natasha",
     profileImage: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",

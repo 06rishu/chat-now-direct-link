@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,9 +20,18 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/live-support" element={<LiveSupport />} />
-          {/* Add agent-specific live support routes */}
-          <Route path="/live-support/agent-:id" element={<AgentLiveSupport />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* Agent-specific live support routes */}
+          <Route path="/live-support/agent-1" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-2" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-3" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-4" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-5" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-6" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-7" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-8" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-9" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-10" element={<AgentLiveSupport />} />
+          {/* CATCH-ALL */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

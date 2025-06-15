@@ -205,14 +205,20 @@ const LiveSupportContent = ({ agent }: { agent: typeof agents[0] }) => (
 
 const AgentLiveSupport = () => {
   const { id } = useParams();
-  const agentIndex = id ? parseInt(id, 10) - 1 : 0;
-  const agent = agents[agentIndex] || agents[0];
+  // If invalid id, fallback to 1
+  let agentIndex = 0;
+  if (id && !isNaN(Number(id))) {
+    const candidateIndex = Number(id) - 1;
+    if (candidateIndex >= 0 && candidateIndex < agents.length) {
+      agentIndex = candidateIndex;
+    }
+  }
+  const agent = agents[agentIndex];
   const navigate = useNavigate();
 
-  // Create the next route (loop back after last agent)
+  // Compute the next agent, loop back after 10
   const nextId = agentIndex < agents.length - 1 ? agentIndex + 2 : 1;
-  const nextAgentPath =
-    `/live-support/agent-${nextId}`;
+  const nextAgentPath = `/live-support/agent-${nextId}`;
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
@@ -227,7 +233,6 @@ const AgentLiveSupport = () => {
           nextLink={nextAgentPath}
           variant="default"
           stats={agent.stats}
-          // Make Next button go to nextAgentPath
           nextButtonHandler={() => navigate(nextAgentPath)}
         />
       </section>
