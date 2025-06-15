@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -52,7 +51,7 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
           <img
             src={profileImage}
             alt={`${name} Profile`}
-            className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-xl"
+            className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl"
             onError={e => {
               const target = e.target as HTMLImageElement;
               target.src = "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face";
