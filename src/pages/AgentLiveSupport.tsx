@@ -203,25 +203,30 @@ const LiveSupportContent = ({ agent }: { agent: typeof agents[0] }) => (
 );
 
 const AgentLiveSupport = () => {
-  const { id } = useParams();
-  // If invalid id, fallback to 1
+  const { "*": urlPath } = useParams();
+  const navigate = useNavigate();
+  
+  // Extract agent number from URL path like "agent-1", "agent-2", etc.
   let agentIndex = 0;
-  if (id && !isNaN(Number(id))) {
-    const candidateIndex = Number(id) - 1;
-    if (candidateIndex >= 0 && candidateIndex < agents.length) {
-      agentIndex = candidateIndex;
+  if (urlPath) {
+    const match = urlPath.match(/agent-(\d+)/);
+    if (match) {
+      const agentNumber = parseInt(match[1]);
+      if (agentNumber >= 1 && agentNumber <= agents.length) {
+        agentIndex = agentNumber - 1; // Convert to 0-based index
+      }
     }
   }
+  
   const agent = agents[agentIndex];
-  const navigate = useNavigate();
 
-  // Compute the next agent, loop back to agent 1 after agent 10
-  const nextId = agentIndex < agents.length - 1 ? agentIndex + 2 : 1;
-  const nextAgentPath = `/live-support/agent-${nextId}`;
+  // Calculate next agent (1-10, loops back to 1 after 10)
+  const nextAgentNumber = agentIndex === agents.length - 1 ? 1 : agentIndex + 2;
+  const nextAgentPath = `/live-support/agent-${nextAgentNumber}`;
 
-  // Compute the previous agent, loop back to agent 10 from agent 1
-  const prevId = agentIndex > 0 ? agentIndex : 10;
-  const prevAgentPath = `/live-support/agent-${prevId}`;
+  // Calculate previous agent (1-10, loops back to 10 from 1)
+  const prevAgentNumber = agentIndex === 0 ? agents.length : agentIndex;
+  const prevAgentPath = `/live-support/agent-${prevAgentNumber}`;
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
@@ -237,7 +242,7 @@ const AgentLiveSupport = () => {
           variant="default"
           stats={agent.stats}
           nextButtonHandler={() => navigate(nextAgentPath)}
-          prevButtonHandler={agentIndex > 0 ? () => navigate(prevAgentPath) : undefined}
+          prevButtonHandler={() => navigate(prevAgentPath)}
         />
       </section>
       {/* Enhanced Live Support Content */}
