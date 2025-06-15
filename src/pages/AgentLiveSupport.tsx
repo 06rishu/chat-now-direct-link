@@ -204,11 +204,9 @@ const LiveSupportContent = ({ agent }: { agent: typeof agents[0] }) => (
 
 const AgentLiveSupport = () => {
   const { id } = useParams();
-  // If invalid id, fallback to agent 2 (index 1)
   let agentIndex = 1;
   if (id && !isNaN(Number(id))) {
     const candidateIndex = Number(id) - 1;
-    // Only allow 2-10
     if (candidateIndex >= 1 && candidateIndex < agents.length) {
       agentIndex = candidateIndex;
     }
@@ -216,10 +214,14 @@ const AgentLiveSupport = () => {
   const agent = agents[agentIndex];
   const navigate = useNavigate();
 
-  // Compute the next agent, loop back after 10 (to 2, not 1)
+  // Compute the next and previous agent (loop 2-10)
   let nextId = agentIndex + 2;
   if (nextId > agents.length) nextId = 2;
   const nextAgentPath = `/live-support/agent-${nextId}`;
+
+  let prevId = agentIndex;
+  if (prevId < 2) prevId = agents.length; // Loop from 2 back to 10
+  const prevAgentPath = `/live-support/agent-${prevId}`;
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
@@ -233,8 +235,9 @@ const AgentLiveSupport = () => {
           nextLink={nextAgentPath}
           variant="default"
           stats={agent.stats}
-          // Next par sahi agent page par le jaye (loop 10 ke baad 2 pe)
           nextButtonHandler={() => navigate(nextAgentPath)}
+          previousButtonHandler={agentIndex + 1 > 2 ? () => navigate(prevAgentPath) : undefined}
+          showPreviousButton={agentIndex + 1 > 2}
         />
       </section>
       <LiveSupportContent agent={agent} />
