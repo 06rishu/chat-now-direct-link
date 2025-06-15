@@ -6,9 +6,9 @@ import LiveSupportContent from "@/components/LiveSupportContent";
 import { useNavigate } from "react-router-dom";
 import { agents } from "@/data/agents";
 
-const Agent10 = () => {
-  // Now this is the NEW agent (index 10 in array)
-  const agent = agents[10];
+const Agent11 = () => {
+  // Agent 11 now shows data for old Agent 10 (index 9)
+  const agent = agents[9];
   const navigate = useNavigate();
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
@@ -23,7 +23,7 @@ const Agent10 = () => {
           variant="default"
           stats={agent.stats}
           nextButtonHandler={() => navigate("/live-support/agent-1")}
-          prevButtonHandler={() => navigate("/live-support/agent-9")}
+          prevButtonHandler={() => navigate("/live-support/agent-10")}
         />
       </section>
       <LiveSupportContent agent={agent} />
@@ -32,4 +32,4 @@ const Agent10 = () => {
   );
 };
 
-export default Agent10;
+export default Agent11;
