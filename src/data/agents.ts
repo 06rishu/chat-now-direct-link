@@ -1,3 +1,4 @@
+
 export type Agent = {
   name: string;
   profileImage: string;
@@ -12,10 +13,10 @@ export type Agent = {
 
 export const agents: Agent[] = [
   {
-    // Agent 1 (Indian Girl)
-    name: "Aditi Sharma",
+    // Agent 1 (Indian Girl, updated full name and picture)
+    name: "Ankita Verma",
     profileImage:
-      "https://randomuser.me/api/portraits/women/25.jpg",
+      "https://randomuser.me/api/portraits/women/44.jpg",
     stats: {
       activeSessions: 2945,
       satisfactionRate: "99.1%",
