@@ -1,9 +1,11 @@
+
 import React from "react";
 import VideoCallCard from "@/components/VideoCallCard";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { agents } from "@/data/agents";
+import { MessageCircle } from "lucide-react";
 
 const LiveSupport = () => {
   // Natasha is agent 1 and should be the default on main /live-support page
