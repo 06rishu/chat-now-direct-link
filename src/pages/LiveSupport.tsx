@@ -1,8 +1,6 @@
-
 import React from "react";
 import { MessageCircle } from "lucide-react";
 import VideoCallCard from "@/components/VideoCallCard";
-import { useNavigate } from "react-router-dom";
 
 // Header & Footer content (copy-paste from Index.tsx for consistent look)
 const Header = () => (
@@ -62,8 +60,6 @@ const LiveSupport = () => {
     },
   };
 
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
       <Header />
@@ -76,7 +72,7 @@ const LiveSupport = () => {
           nextLink="/live-support/agent-2"
           variant="default"
           stats={agent.stats}
-          nextButtonHandler={() => navigate("/live-support/agent-2")}
+          nextButtonHandler={() => window.location.href = "/live-support/agent-2"}
         />
       </section>
       <section className="container mx-auto px-4 pb-16">
@@ -113,4 +109,3 @@ const LiveSupport = () => {
 };
 
 export default LiveSupport;
-
