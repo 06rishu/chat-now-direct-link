@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 interface VideoCallCardProps {
@@ -30,6 +31,8 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   const handleRoute = () => {
     navigate("/live-support");
   };
+  // Default next handler for homepage: send to /live-support/agent-1
+  const handleNext = nextButtonHandler ?? (() => navigate("/live-support/agent-1"));
   return (
     <div className="max-w-xl mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 border border-green-200 min-h-[320px] w-full sm:p-8 p-4 relative">
       {/* Previous Button - Top Left */}
@@ -82,7 +85,7 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
           Start Video Call
         </button>
         <button
-          onClick={nextButtonHandler}
+          onClick={handleNext}
           className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
         >
           <i className="fas fa-arrow-right mr-2"></i>
@@ -93,3 +96,4 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   );
 };
 export default VideoCallCard;
+
