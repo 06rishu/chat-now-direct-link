@@ -137,17 +137,6 @@ const Index = () => {
         />
       </section>
 
-      {/* Live Support Card */}
-      <section className="container mx-auto px-4 mb-8">
-        <VideoCallCard
-          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-          name="Live Support"
-          status="Available 24/7"
-          videoCallLink=""
-          nextLink=""
-        />
-      </section>
-
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-8 sm:py-16">
         <div className="text-center max-w-4xl mx-auto">
