@@ -36,7 +36,17 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 border border-green-200 min-h-[320px] w-full sm:p-8 p-4">
+    <div className="max-w-xl mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 border border-green-200 min-h-[320px] w-full sm:p-8 p-4 relative">
+      {/* Previous Button - Top Left */}
+      {prevButtonHandler && (
+        <button
+          onClick={prevButtonHandler}
+          className="absolute top-4 left-4 bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md w-10 h-10"
+        >
+          <i className="fas fa-arrow-left"></i>
+        </button>
+      )}
+      
       <div className="flex flex-col items-center w-full">
         <div className="relative mb-2">
           <img
@@ -73,24 +83,13 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
           <i className="fas fa-video mr-2"></i>
           Start Video Call
         </button>
-        <div className="flex gap-2 flex-1">
-          {prevButtonHandler && (
-            <button
-              onClick={prevButtonHandler}
-              className="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
-            >
-              <i className="fas fa-arrow-left mr-2"></i>
-              Prev
-            </button>
-          )}
-          <button
-            onClick={nextButtonHandler}
-            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
-          >
-            <i className="fas fa-arrow-right mr-2"></i>
-            Next
-          </button>
-        </div>
+        <button
+          onClick={nextButtonHandler}
+          className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
+        >
+          <i className="fas fa-arrow-right mr-2"></i>
+          Next
+        </button>
       </div>
     </div>
   );

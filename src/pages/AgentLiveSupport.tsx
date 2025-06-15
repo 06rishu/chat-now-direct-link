@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 import VideoCallCard from "@/components/VideoCallCard";
 
@@ -203,18 +203,16 @@ const LiveSupportContent = ({ agent }: { agent: typeof agents[0] }) => (
 );
 
 const AgentLiveSupport = () => {
-  const { "*": urlPath } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
   
-  // Extract agent number from URL path like "agent-1", "agent-2", etc.
+  // Extract agent number from pathname like "/live-support/agent-1"
   let agentIndex = 0;
-  if (urlPath) {
-    const match = urlPath.match(/agent-(\d+)/);
-    if (match) {
-      const agentNumber = parseInt(match[1]);
-      if (agentNumber >= 1 && agentNumber <= agents.length) {
-        agentIndex = agentNumber - 1; // Convert to 0-based index
-      }
+  const match = location.pathname.match(/\/live-support\/agent-(\d+)/);
+  if (match) {
+    const agentNumber = parseInt(match[1]);
+    if (agentNumber >= 1 && agentNumber <= agents.length) {
+      agentIndex = agentNumber - 1; // Convert to 0-based index
     }
   }
   

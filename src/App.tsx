@@ -20,8 +20,17 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/live-support" element={<LiveSupport />} />
-          {/* Single route to handle all agent pages */}
-          <Route path="/live-support/*" element={<AgentLiveSupport />} />
+          {/* Individual agent routes */}
+          <Route path="/live-support/agent-1" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-2" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-3" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-4" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-5" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-6" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-7" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-8" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-9" element={<AgentLiveSupport />} />
+          <Route path="/live-support/agent-10" element={<AgentLiveSupport />} />
           {/* CATCH-ALL */}
           <Route path="*" element={<NotFound />} />
         </Routes>
