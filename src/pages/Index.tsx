@@ -252,25 +252,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Third Video Call Card - Premium */}
-      <section className="container mx-auto px-4 mb-8">
-        <VideoCallCard
-          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-          name="Sarah Wilson"
-          status="Premium Expert Support"
-          videoCallLink="https://www.google.com"
-          nextLink="https://www.google.com"
-          variant="premium"
-          stats={{
-            activeSessions: 2847,
-            satisfactionRate: "99.2%",
-            responseTime: "< 30 seconds",
-            rating: 4.9,
-            reviews: 1247
-          }}
-        />
-      </section>
-
       {/* FAQ Section */}
       <section className="bg-white py-12 sm:py-16">
         <div className="container mx-auto px-4">
