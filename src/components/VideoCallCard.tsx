@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import { User } from "lucide-react";
 interface VideoCallCardProps {
   profileImage: string;
   name: string;
@@ -48,6 +50,16 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
           <i className="fas fa-arrow-left"></i>
         </button>
       )}
+
+      {/* Live Support Title with User Icon */}
+      <div className="flex items-center gap-3 mb-2 mt-1">
+        <span className="bg-green-500 p-2 rounded-full flex items-center justify-center">
+          <User className="text-white w-6 h-6" />
+        </span>
+        <h2 className="text-xl sm:text-2xl font-extrabold text-green-800">
+          Live Support - {name}
+        </h2>
+      </div>
 
       <div className="flex flex-col items-center w-full">
         <div className="relative mb-2">
@@ -100,3 +112,4 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   );
 };
 export default VideoCallCard;
+
