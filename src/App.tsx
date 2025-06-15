@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import LiveSupport from "./pages/LiveSupport";
-import AgentLiveSupport from "./pages/AgentLiveSupport";
+// Removed: import AgentLiveSupport from "./pages/AgentLiveSupport";
 import Agent1 from "./pages/agents/Agent1";
 import Agent2 from "./pages/agents/Agent2";
 import Agent3 from "./pages/agents/Agent3";
