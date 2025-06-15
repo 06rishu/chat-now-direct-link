@@ -1,6 +1,6 @@
 
 import { MessageCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -22,6 +22,31 @@ const Footer = () => {
             <span className="text-lg font-semibold">Wa Me 91</span>
           </button>
         </div>
+
+        {/* Footer Links */}
+        <nav className="mb-4">
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-gray-300 text-sm font-medium">
+            <li>
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link>
+            </li>
+            <li>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
+            </li>
+            <li>
+              <Link to="/live-support" className="hover:text-white transition-colors">Live Support</Link>
+            </li>
+          </ul>
+        </nav>
+
         <p className="text-gray-400 text-sm mb-4">
           The easiest way to WhatsApp direct chat in India
         </p>
@@ -41,3 +66,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
