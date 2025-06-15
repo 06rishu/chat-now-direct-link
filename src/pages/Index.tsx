@@ -190,6 +190,7 @@ const Index = () => {
           status="Live Support 24/7"
           videoCallLink="https://www.google.com"
           nextLink="https://www.google.com"
+          variant="simple"
         />
       </section>
 

@@ -7,7 +7,7 @@ interface VideoCallCardProps {
   status: string;
   videoCallLink: string;
   nextLink: string;
-  variant?: 'default' | 'premium';
+  variant?: 'default' | 'premium' | 'simple';
   stats?: {
     activeSessions?: number;
     satisfactionRate?: string;
@@ -34,6 +34,52 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
     window.open(nextLink, '_blank');
   };
 
+  if (variant === 'simple') {
+    return (
+      <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 border border-green-100">
+        <div className="flex flex-col items-center mb-6">
+          <div className="relative mb-4">
+            <img 
+              src={profileImage} 
+              alt={`${name} Profile`} 
+              className="w-20 h-20 rounded-full object-cover shadow-lg"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face";
+              }}
+            />
+            <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white animate-pulse flex items-center justify-center">
+              <i className="fas fa-video text-white text-xs"></i>
+            </div>
+          </div>
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-gray-900 mb-1">{name}</h3>
+            <p className="text-sm text-green-600 flex items-center justify-center">
+              <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+              {status}
+            </p>
+          </div>
+        </div>
+        <div className="flex space-x-3">
+          <button 
+            onClick={handleVideoCall}
+            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-medium transition-colors shadow-md"
+          >
+            <i className="fas fa-video mr-2"></i>
+            Video Call
+          </button>
+          <button 
+            onClick={handleNext}
+            className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-medium transition-colors shadow-md"
+          >
+            <i className="fas fa-arrow-right mr-2"></i>
+            Next
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (variant === 'premium') {
     return (
       <div className="max-w-xl mx-auto bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl p-8 text-white relative overflow-hidden">
@@ -51,6 +97,10 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
                   src={profileImage} 
                   alt={`${name} Profile`} 
                   className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1494790108755-2616b612b647?w=64&h=64&fit=crop&crop=face";
+                  }}
                 />
                 <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-400 rounded-full border-3 border-white flex items-center justify-center">
                   <i className="fas fa-video text-white text-xs"></i>
@@ -121,6 +171,10 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
             src={profileImage} 
             alt={`${name} Profile`} 
             className="w-20 h-20 rounded-full object-cover shadow-lg"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = "https://images.unsplash.com/photo-1494790108755-2616b612b647?w=80&h=80&fit=crop&crop=face";
+            }}
           />
           <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white animate-pulse flex items-center justify-center">
             <i className="fas fa-video text-white text-xs"></i>
