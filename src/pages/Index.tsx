@@ -120,21 +120,56 @@ const Index = () => {
 
       {/* Video Call Card 1 - Natasha, Hero Style */}
       <section className="container mx-auto px-4 mb-8">
-        <VideoCallCard
-          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face"
-          name="Natasha"
-          status="Expert Support 24/7"
-          videoCallLink=""
-          nextLink=""
-          variant="default"
-          stats={{
-            activeSessions: 2945,
-            satisfactionRate: "99.1%",
-            responseTime: "< 30 seconds",
-            rating: 4.9,
-            reviews: 1317
-          }}
-        />
+        <div className="max-w-xl mx-auto bg-gradient-to-br from-pink-500 via-red-400 to-yellow-300 rounded-3xl shadow-2xl p-8 text-white relative overflow-hidden animate-fade-in">
+          {/* Decorative Background Circles */}
+          <div className="absolute left-0 top-0 w-32 h-32 bg-white opacity-10 rounded-full -translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute right-0 bottom-0 w-40 h-40 bg-white opacity-10 rounded-full translate-x-1/4 translate-y-1/4" />
+          
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="relative mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=160&h=160&fit=crop&crop=face"
+                alt="Natasha Profile"
+                className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-xl transition-transform duration-300 hover:scale-105"
+              />
+              <span className="absolute -bottom-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full shadow-lg font-semibold flex items-center pulse">
+                <i className="fas fa-circle mr-1 text-emerald-200 animate-pulse" /> Live
+              </span>
+            </div>
+            <h3 className="text-3xl font-bold drop-shadow-lg mb-2 flex items-center gap-2">
+              Natasha
+              <span className="inline-block bg-white/30 px-4 py-1 rounded-full ml-2 text-lg font-bold text-pink-100 border border-white/40">
+                <i className="fas fa-star text-yellow-300 mr-1" /> 4.9
+              </span>
+            </h3>
+            <p className="text-lg font-medium text-yellow-50 animate-pulse mb-2 flex items-center">
+              <i className="fas fa-headset mr-2" /> Available for Live Support 24/7
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mt-5 w-full">
+              <button
+                onClick={() => window.open('https://www.google.com', '_blank')}
+                className="flex-1 bg-white text-pink-600 hover:bg-yellow-50 hover:text-red-500 py-4 px-7 rounded-2xl font-extrabold text-xl shadow-xl transform hover:scale-105 transition hover:shadow-2xl duration-200 border border-white/20 flex items-center justify-center gap-2"
+              >
+                <i className="fas fa-video mr-2" />
+                Start Video Call
+              </button>
+              <button
+                onClick={() => window.open('https://www.google.com', '_blank')}
+                className="flex-1 bg-white/20 hover:bg-white/30 backdrop-blur-sm py-4 px-6 rounded-2xl font-semibold text-white border border-white/30 transition flex items-center justify-center gap-2"
+              >
+                <i className="fas fa-arrow-right" />
+                Next
+              </button>
+            </div>
+            <div className="mt-4 flex items-center gap-4">
+              <span className="bg-pink-700/60 px-3 py-1 rounded-full font-medium text-sm">Instant Connect</span>
+              <span className="bg-yellow-500 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                <i className="fas fa-fire" />
+                Trending
+              </span>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Live Support Card */}
@@ -143,8 +178,8 @@ const Index = () => {
           profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
           name="Live Support"
           status="Available 24/7"
-          videoCallLink=""
-          nextLink=""
+          videoCallLink="https://www.google.com"
+          nextLink="https://www.google.com"
         />
       </section>
 
@@ -206,8 +241,9 @@ const Index = () => {
           profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
           name="Natasha"
           status="Live Support 24/7"
-          videoCallLink=""
-          nextLink=""
+          videoCallLink="https://www.google.com"
+          nextLink="https://www.google.com"
+          variant="simple"
         />
       </section>
 
