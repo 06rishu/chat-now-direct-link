@@ -1,13 +1,21 @@
+
 import { MessageCircle, Phone, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import VideoCallCard from "@/components/VideoCallCard";
 import FeatureCard from "@/components/FeatureCard";
 import FAQItem from "@/components/FAQItem";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
+
   const handleStartChat = () => {
-    window.open("https://www.google.com", "_blank");
+    navigate("/live-support");
+  };
+
+  const handleNextButtonClick = () => {
+    navigate("/live-support");
   };
 
   const features = [
@@ -134,6 +142,7 @@ const Index = () => {
             rating: 4.9,
             reviews: 1317
           }}
+          nextButtonHandler={handleNextButtonClick}
         />
       </section>
 
@@ -197,6 +206,7 @@ const Index = () => {
           status="Live Support 24/7"
           videoCallLink=""
           nextLink=""
+          nextButtonHandler={handleNextButtonClick}
         />
       </section>
 
@@ -259,6 +269,7 @@ const Index = () => {
             rating: 4.9,
             reviews: 1247
           }}
+          nextButtonHandler={handleNextButtonClick}
         />
       </section>
 
