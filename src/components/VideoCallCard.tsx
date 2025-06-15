@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 interface VideoCallCardProps {
   profileImage: string;
@@ -16,8 +17,6 @@ interface VideoCallCardProps {
     reviews?: number;
   };
   nextButtonHandler?: () => void;
-  previousButtonHandler?: (() => void) | null;
-  showPreviousButton?: boolean;
 }
 
 const VideoCallCard: React.FC<VideoCallCardProps> = ({
@@ -27,22 +26,15 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   variant = 'default',
   stats,
   nextButtonHandler,
-  previousButtonHandler,
-  showPreviousButton = false,
 }) => {
+  const navigate = useNavigate();
+
+  const handleRoute = () => {
+    navigate("/live-support");
+  };
+
   return (
-    <div className="relative max-w-xl w-full mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-5 sm:p-8 flex flex-col items-start gap-5 border border-green-200 min-h-[320px]">
-      {/* Previous Button - top left, absolute position */}
-      {showPreviousButton && (
-        <button
-          onClick={previousButtonHandler}
-          className="absolute top-3 left-3 bg-white border border-green-300 shadow-md rounded-full px-3 py-1 flex items-center gap-1 text-green-700 text-sm font-medium hover:bg-green-100 transition z-10"
-          aria-label="Previous Agent"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          Previous
-        </button>
-      )}
+    <div className="max-w-xl w-full mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-5 sm:p-8 flex flex-col items-start gap-5 border border-green-200 min-h-[320px]">
       <div className="flex flex-col items-start w-full">
         <div className="relative mb-2 self-center">
           <img
@@ -73,7 +65,7 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
       </div>
       <div className="flex w-full flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
         <button
-          onClick={nextButtonHandler}
+          onClick={handleRoute}
           className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4 mb-2 sm:mb-0"
         >
           <i className="fas fa-video mr-2"></i>
