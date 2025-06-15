@@ -79,15 +79,15 @@ const LiveSupport = () => {
         />
       </section>
       <section className="container mx-auto px-4 pb-16">
-        <div className="bg-white/90 rounded-3xl shadow-2xl px-8 py-10 max-w-xl mx-auto flex flex-col items-center mt-4">
+        <div className="bg-white/90 rounded-3xl shadow-2xl px-8 py-10 max-w-xl mx-auto flex flex-col items-start mt-4">
           <div className="bg-green-500 p-3 rounded-full mb-4">
             <MessageCircle className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-3xl font-extrabold text-green-800 mb-3">Live Support - Natasha</h2>
-          <p className="text-lg text-gray-700 mb-2 text-center">
+          <p className="text-lg text-gray-700 mb-2 text-left">
             Connect instantly with <b>Natasha</b> for personalized help. Our team is available <b>24/7</b> to answer your questions and resolve your WhatsApp or Wa Me 91 usage concerns—just a click away!
           </p>
-          <p className="text-base text-gray-600 mb-2 text-center">
+          <p className="text-base text-gray-600 mb-2 text-left">
             <b>Why choose Natasha?</b><br />
             - Trusted by 2900+ users<br />
             - Fast resolution rate<br />
