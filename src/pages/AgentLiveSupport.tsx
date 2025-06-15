@@ -111,19 +111,20 @@ const AgentLiveSupport = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Only support agent-1 route for Rohan
-  let agentIndex = 0;
+  // Determine which agent to display based on the URL path
+  let agentIndex = 0; // Default to Rohan for /agent-1
   if (location.pathname.includes("/agent-2")) {
-    agentIndex = 1;
+    agentIndex = 1; // Set to Priya for /agent-2
   }
   const agent = agents[agentIndex];
 
-  // Set navigation targets for buttons
+  // Define navigation paths based on the current agent
   let prevPath = "/live-support";
   let nextPath = "/live-support/agent-2";
-  if (agentIndex === 1) {
+
+  if (agentIndex === 1) { // If on agent-2 page (Priya)
     prevPath = "/live-support/agent-1";
-    nextPath = "#"; // If you want to extend to next agents, adjust here
+    nextPath = "#"; // No "next" agent after Priya for now
   }
 
   return (
