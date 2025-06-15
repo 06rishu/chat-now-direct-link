@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { agents } from "@/data/agents";
 
 const Agent2 = () => {
-  // Now using data from agent 3 (index 2)
-  const agent = agents[2];
+  const agent = agents[1];
   const navigate = useNavigate();
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
