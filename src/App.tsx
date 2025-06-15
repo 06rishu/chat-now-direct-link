@@ -17,6 +17,7 @@ import Agent8 from "./pages/agents/Agent8";
 import Agent9 from "./pages/agents/Agent9";
 import Agent10 from "./pages/agents/Agent10";
 import WaMe91 from "./pages/wa-me-91";
+import VideoCallPage from "./pages/video-call";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,8 @@ const App = () => (
           <Route path="/live-support/agent-10" element={<Agent10 />} />
           {/* wa-me-91 page */}
           <Route path="/wa-me-91" element={<WaMe91 />} />
+          {/* video-call page */}
+          <Route path="/video-call" element={<VideoCallPage />} />
           {/* CATCH-ALL */}
           <Route path="*" element={<NotFound />} />
         </Routes>
