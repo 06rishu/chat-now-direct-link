@@ -132,17 +132,4 @@ export const agents: Agent[] = [
       reviews: 602,
     },
   },
-  // New agent for Agent10 page
-  {
-    name: "Zara Ahmed",
-    profileImage:
-      "https://randomuser.me/api/portraits/women/90.jpg",
-    stats: {
-      activeSessions: 851,
-      satisfactionRate: "97.7%",
-      responseTime: "< 1 min",
-      rating: 4.6,
-      reviews: 453,
-    },
-  },
 ];
