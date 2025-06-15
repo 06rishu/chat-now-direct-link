@@ -24,7 +24,7 @@ const Agent1 = () => {
           variant="default"
           stats={agent.stats}
           nextButtonHandler={() => navigate("/live-support/agent-2")}
-          prevButtonHandler={() => navigate("/live-support/agent-10")}
+          // Previous button intentionally omitted for Agent 1 page
         />
       </section>
       <LiveSupportContent agent={agent} />
@@ -34,3 +34,4 @@ const Agent1 = () => {
 };
 
 export default Agent1;
+
