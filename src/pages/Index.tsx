@@ -118,10 +118,10 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Video Call Card 1 - Natasha, Hero Style */}
-      <section className="container mx-auto px-4 mb-8">
+      {/* Video Call Card 1 - Natasha */}
+      <section className="container mx-auto px-4 mb-8 flex justify-center">
         <VideoCallCard
-          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face"
+          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=face"
           name="Natasha"
           status="Expert Support 24/7"
           videoCallLink=""
@@ -137,15 +137,24 @@ const Index = () => {
         />
       </section>
 
-      {/* Live Support Card */}
-      <section className="container mx-auto px-4 mb-8">
-        <VideoCallCard
-          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-          name="Live Support"
-          status="Available 24/7"
-          videoCallLink=""
-          nextLink=""
-        />
+      {/* WhatsApp Preview */}
+      <section className="container mx-auto px-4 mb-8 flex justify-center">
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 max-w-md w-full mx-auto">
+          <div className="bg-green-500 rounded-t-2xl px-4 py-2 text-white flex items-center">
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3">
+              <i className="fab fa-whatsapp text-green-500 text-lg"></i>
+            </div>
+            <div>
+              <div className="font-semibold">WhatsApp Chat</div>
+              <div className="text-xs opacity-90">online</div>
+            </div>
+          </div>
+          <div className="bg-gray-50 p-4 h-28 flex items-center justify-center">
+            <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg text-xs">
+              <i className="fas fa-comments mr-1"></i>Chat directly without saving number! <i className="fas fa-comments"></i>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Hero Section */}
@@ -198,17 +207,6 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Second Video Call Card - Natasha */}
-      <section className="container mx-auto px-4 mb-8">
-        <VideoCallCard
-          profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-          name="Natasha"
-          status="Live Support 24/7"
-          videoCallLink=""
-          nextLink=""
-        />
       </section>
 
       {/* Introduction Section */}
