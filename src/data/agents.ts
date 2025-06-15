@@ -39,7 +39,7 @@ export const agents: Agent[] = [
     },
   },
   {
-    // Agent 3 (Indian Girl)
+    // Agent 3 (no change)
     name: "Sanya Gupta",
     profileImage:
       "https://randomuser.me/api/portraits/women/54.jpg",
@@ -52,8 +52,8 @@ export const agents: Agent[] = [
     },
   },
   {
-    // Agent 4 (unchanged)
-    name: "Sneha",
+    // Agent 4
+    name: "Sneha Roy",
     profileImage:
       "https://randomuser.me/api/portraits/women/81.jpg",
     stats: {
@@ -65,8 +65,8 @@ export const agents: Agent[] = [
     },
   },
   {
-    // Agent 5 (Indian Girl)
-    name: "Ritu Kumari",
+    // Agent 5
+    name: "Suman Patel",
     profileImage:
       "https://randomuser.me/api/portraits/women/30.jpg",
     stats: {
@@ -78,7 +78,7 @@ export const agents: Agent[] = [
     },
   },
   {
-    name: "Sanya",
+    name: "Sanya Kapoor",
     profileImage:
       "https://randomuser.me/api/portraits/women/85.jpg",
     stats: {
@@ -90,7 +90,7 @@ export const agents: Agent[] = [
     },
   },
   {
-    name: "Raj",
+    name: "Raj Verma",
     profileImage:
       "https://randomuser.me/api/portraits/men/78.jpg",
     stats: {
@@ -102,7 +102,7 @@ export const agents: Agent[] = [
     },
   },
   {
-    name: "Meera",
+    name: "Meera Rajput",
     profileImage:
       "https://randomuser.me/api/portraits/women/87.jpg",
     stats: {
@@ -140,4 +140,3 @@ export const agents: Agent[] = [
     },
   },
 ];
-
