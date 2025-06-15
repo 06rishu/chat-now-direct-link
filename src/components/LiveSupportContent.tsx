@@ -5,10 +5,14 @@ import { Agent } from "@/data/agents";
 const LiveSupportContent = ({ agent }: { agent: Agent }) => (
   <section className="container mx-auto px-4 pb-16">
     <div className="bg-white/90 rounded-3xl shadow-2xl px-8 py-10 max-w-xl mx-auto flex flex-col items-start mt-4">
-      <div className="bg-green-500 p-3 rounded-full mb-4">
-        <MessageCircle className="w-8 h-8 text-white" />
+      <div className="flex items-center mb-4">
+        <span className="bg-green-500 p-3 rounded-full flex items-center justify-center mr-3">
+          <MessageCircle className="w-8 h-8 text-white" />
+        </span>
+        <h2 className="text-3xl font-extrabold text-green-800">
+          Live Support - {agent.name}
+        </h2>
       </div>
-      <h2 className="text-3xl font-extrabold text-green-800 mb-3">Live Support - {agent.name}</h2>
       <p className="text-lg text-gray-700 mb-2 text-left">
         Get instant help from <b>{agent.name}</b>, our expert support agent! Talk, ask questions, and solve all your WhatsApp or Wa Me 91 usage issues in real time. Just click and connect—<span className="text-green-700 font-bold">no waiting, no hassle!</span>
       </p>
@@ -34,3 +38,4 @@ const LiveSupportContent = ({ agent }: { agent: Agent }) => (
 );
 
 export default LiveSupportContent;
+
