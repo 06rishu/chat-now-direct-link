@@ -3,24 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 import VideoCallCard from "@/components/VideoCallCard";
 
-// Agents data (names & profile pictures)
+// Only the 3 required agents: Rohan and Priya
 const agents = [
   {
-    name: "Natasha",
-    profileImage:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
-    stats: {
-      activeSessions: 2945,
-      satisfactionRate: "99.1%",
-      responseTime: "< 30 seconds",
-      rating: 4.9,
-      reviews: 1317,
-    },
-  },
-  {
     name: "Rohan",
-    profileImage:
-      "https://randomuser.me/api/portraits/men/75.jpg",
+    profileImage: "https://randomuser.me/api/portraits/men/75.jpg",
     stats: {
       activeSessions: 1911,
       satisfactionRate: "98.5%",
@@ -31,98 +18,13 @@ const agents = [
   },
   {
     name: "Priya",
-    profileImage:
-      "https://randomuser.me/api/portraits/women/80.jpg",
+    profileImage: "https://randomuser.me/api/portraits/women/80.jpg",
     stats: {
       activeSessions: 1723,
       satisfactionRate: "99.8%",
       responseTime: "35 seconds",
       rating: 5.0,
       reviews: 1475,
-    },
-  },
-  {
-    name: "Arjun",
-    profileImage:
-      "https://randomuser.me/api/portraits/men/76.jpg",
-    stats: {
-      activeSessions: 1622,
-      satisfactionRate: "97.3%",
-      responseTime: "< 2 min",
-      rating: 4.7,
-      reviews: 856,
-    },
-  },
-  {
-    name: "Sneha",
-    profileImage:
-      "https://randomuser.me/api/portraits/women/81.jpg",
-    stats: {
-      activeSessions: 1349,
-      satisfactionRate: "99.6%",
-      responseTime: "50 seconds",
-      rating: 4.9,
-      reviews: 1198,
-    },
-  },
-  {
-    name: "Ankit",
-    profileImage:
-      "https://randomuser.me/api/portraits/men/71.jpg",
-    stats: {
-      activeSessions: 1006,
-      satisfactionRate: "98.9%",
-      responseTime: "< 1 min",
-      rating: 4.6,
-      reviews: 674,
-    },
-  },
-  {
-    name: "Sanya",
-    profileImage:
-      "https://randomuser.me/api/portraits/women/85.jpg",
-    stats: {
-      activeSessions: 1093,
-      satisfactionRate: "99.2%",
-      responseTime: "45 seconds",
-      rating: 4.8,
-      reviews: 703,
-    },
-  },
-  {
-    name: "Raj",
-    profileImage:
-      "https://randomuser.me/api/portraits/men/78.jpg",
-    stats: {
-      activeSessions: 1142,
-      satisfactionRate: "97.9%",
-      responseTime: "< 2 min",
-      rating: 4.5,
-      reviews: 849,
-    },
-  },
-  {
-    name: "Meera",
-    profileImage:
-      "https://randomuser.me/api/portraits/women/87.jpg",
-    stats: {
-      activeSessions: 1218,
-      satisfactionRate: "99.4%",
-      responseTime: "39 seconds",
-      rating: 5.0,
-      reviews: 1122,
-    },
-  },
-  {
-    name: "Vikas",
-    profileImage:
-      "https://randomuser.me/api/portraits/men/80.jpg",
-    stats: {
-      activeSessions: 997,
-      satisfactionRate: "98.1%",
-      responseTime: "55 seconds",
-      rating: 4.7,
-      reviews: 602,
     },
   },
 ];
@@ -205,45 +107,48 @@ const LiveSupportContent = ({ agent }: { agent: typeof agents[0] }) => (
 const AgentLiveSupport = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  
-  // Extract agent number from pathname like "/live-support/agent-1"
-  let agentIndex = 0;
+
   const match = location.pathname.match(/\/live-support\/agent-(\d+)/);
+  // If matching agent-1 or agent-2, show correct agent, else null
+  let agent = null;
+  let agentNum = 0;
   if (match) {
-    const agentNumber = parseInt(match[1]);
-    if (agentNumber >= 1 && agentNumber <= agents.length) {
-      agentIndex = agentNumber - 1; // Convert to 0-based index
-    }
+    agentNum = Number(match[1]);
+    if (agentNum === 1) agent = agents[0];
+    if (agentNum === 2) agent = agents[1];
   }
-  
-  const agent = agents[agentIndex];
 
-  // Calculate next agent (1-10, loops back to 1 after 10)
-  const nextAgentNumber = agentIndex === agents.length - 1 ? 1 : agentIndex + 2;
-  const nextAgentPath = `/live-support/agent-${nextAgentNumber}`;
+  if (!agent) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-50 to-green-100">
+        <Header />
+        <div className="text-2xl font-semibold text-gray-500 py-32">No agent available.</div>
+        <Footer />
+      </div>
+    );
+  }
 
-  // Calculate previous agent (1-10, loops back to 10 from 1)
-  const prevAgentNumber = agentIndex === 0 ? agents.length : agentIndex;
-  const prevAgentPath = `/live-support/agent-${prevAgentNumber}`;
+  // Next button logic: agent-1 → agent-2
+  const next = agentNum === 1
+    ? () => navigate("/live-support/agent-2")
+    : undefined;
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
       <Header />
-      {/* Agent Video Card */}
       <section className="container mx-auto px-4 mb-8">
         <VideoCallCard
           profileImage={agent.profileImage}
           name={agent.name}
           status="Expert Support 24/7"
           videoCallLink="#"
-          nextLink={nextAgentPath}
+          nextLink={agentNum === 1 ? "/live-support/agent-2" : undefined}
           variant="default"
           stats={agent.stats}
-          nextButtonHandler={() => navigate(nextAgentPath)}
-          prevButtonHandler={() => navigate(prevAgentPath)}
+          nextButtonHandler={next}
+          // No previous/loop button
         />
       </section>
-      {/* Enhanced Live Support Content */}
       <LiveSupportContent agent={agent} />
       <Footer />
     </div>
