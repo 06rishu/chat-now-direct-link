@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 interface VideoCallCardProps {
@@ -27,8 +28,9 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   prevButtonHandler
 }) => {
   const navigate = useNavigate();
+  // Update: Video Call button should go to /video-call page
   const handleRoute = () => {
-    navigate("/live-support");
+    navigate("/video-call");
   };
   // "Next" button handler: always navigates to /live-support/agent-1 if not provided
   const handleNext =
@@ -100,3 +102,4 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   );
 };
 export default VideoCallCard;
+
