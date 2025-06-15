@@ -1,4 +1,3 @@
-
 export type Agent = {
   name: string;
   profileImage: string;
@@ -13,9 +12,10 @@ export type Agent = {
 
 export const agents: Agent[] = [
   {
-    name: "Natasha",
+    // Agent 1 (Indian Girl)
+    name: "Aditi Sharma",
     profileImage:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
+      "https://randomuser.me/api/portraits/women/25.jpg",
     stats: {
       activeSessions: 2945,
       satisfactionRate: "99.1%",
@@ -25,9 +25,10 @@ export const agents: Agent[] = [
     },
   },
   {
-    name: "Rohan",
+    // Agent 2 (Indian Girl)
+    name: "Priya Rajput",
     profileImage:
-      "https://randomuser.me/api/portraits/men/75.jpg",
+      "https://randomuser.me/api/portraits/women/21.jpg",
     stats: {
       activeSessions: 1911,
       satisfactionRate: "98.5%",
@@ -37,6 +38,7 @@ export const agents: Agent[] = [
     },
   },
   {
+    // Agent 3 (unchanged)
     name: "Priya",
     profileImage:
       "https://randomuser.me/api/portraits/women/80.jpg",
@@ -49,9 +51,10 @@ export const agents: Agent[] = [
     },
   },
   {
-    name: "Arjun",
+    // Agent 4 (Indian Girl)
+    name: "Sanya Gupta",
     profileImage:
-      "https://randomuser.me/api/portraits/men/76.jpg",
+      "https://randomuser.me/api/portraits/women/54.jpg",
     stats: {
       activeSessions: 1622,
       satisfactionRate: "97.3%",
@@ -61,6 +64,7 @@ export const agents: Agent[] = [
     },
   },
   {
+    // Agent 5 (unchanged)
     name: "Sneha",
     profileImage:
       "https://randomuser.me/api/portraits/women/81.jpg",
@@ -73,9 +77,10 @@ export const agents: Agent[] = [
     },
   },
   {
-    name: "Ankit",
+    // Agent 6 (Indian Girl)
+    name: "Ritu Kumari",
     profileImage:
-      "https://randomuser.me/api/portraits/men/71.jpg",
+      "https://randomuser.me/api/portraits/women/30.jpg",
     stats: {
       activeSessions: 1006,
       satisfactionRate: "98.9%",
