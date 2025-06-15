@@ -1,4 +1,3 @@
-
 import React from "react";
 import { MessageCircle } from "lucide-react";
 import VideoCallCard from "@/components/VideoCallCard";
@@ -73,10 +72,10 @@ const LiveSupport = () => {
           name={agent.name}
           status="Expert Support 24/7"
           videoCallLink="#"
-          nextLink="/live-support/agent-2"
+          nextLink="/live-support/agent-1"
           variant="default"
           stats={agent.stats}
-          nextButtonHandler={() => navigate("/live-support/agent-2")}
+          nextButtonHandler={() => navigate("/live-support/agent-1")}
         />
       </section>
       <section className="container mx-auto px-4 pb-16">
@@ -113,4 +112,3 @@ const LiveSupport = () => {
 };
 
 export default LiveSupport;
-

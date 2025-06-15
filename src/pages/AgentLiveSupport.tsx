@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
@@ -216,9 +215,13 @@ const AgentLiveSupport = () => {
   const agent = agents[agentIndex];
   const navigate = useNavigate();
 
-  // Compute the next agent, loop back after 10
+  // Compute the next agent, loop back to agent 1 after agent 10
   const nextId = agentIndex < agents.length - 1 ? agentIndex + 2 : 1;
   const nextAgentPath = `/live-support/agent-${nextId}`;
+
+  // Compute the previous agent, loop back to agent 10 from agent 1
+  const prevId = agentIndex > 0 ? agentIndex : 10;
+  const prevAgentPath = `/live-support/agent-${prevId}`;
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
@@ -234,6 +237,7 @@ const AgentLiveSupport = () => {
           variant="default"
           stats={agent.stats}
           nextButtonHandler={() => navigate(nextAgentPath)}
+          prevButtonHandler={agentIndex > 0 ? () => navigate(prevAgentPath) : undefined}
         />
       </section>
       {/* Enhanced Live Support Content */}
