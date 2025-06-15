@@ -15,10 +15,6 @@ const Index = () => {
     navigate("/live-support");
   };
 
-  const handleNextButtonClick = () => {
-    navigate("/live-support");
-  };
-
   const features = [
     {
       icon: "fas fa-mouse text-green-600",
@@ -130,7 +126,6 @@ const Index = () => {
               rating: 4.9,
               reviews: 1317
             }}
-            nextButtonHandler={handleNextButtonClick}
           />
         </section>
 
@@ -194,7 +189,6 @@ const Index = () => {
             status="Live Support 24/7"
             videoCallLink=""
             nextLink=""
-            nextButtonHandler={handleNextButtonClick}
           />
         </section>
 
@@ -257,7 +251,6 @@ const Index = () => {
               rating: 4.9,
               reviews: 1247
             }}
-            nextButtonHandler={handleNextButtonClick}
           />
         </section>
 
