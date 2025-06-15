@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { agents } from "@/data/agents";
 
 const Agent1 = () => {
-  // Now using data from agent 10 (index 9)
-  const agent = agents[9];
+  // Now using data from agent 2 (index 1)
+  const agent = agents[1];
   const navigate = useNavigate();
 
   return (
@@ -34,4 +34,3 @@ const Agent1 = () => {
 };
 
 export default Agent1;
-
