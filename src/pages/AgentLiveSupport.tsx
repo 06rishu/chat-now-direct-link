@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
@@ -172,59 +173,58 @@ const Footer = () => (
 );
 
 const LiveSupportContent = ({ agent }: { agent: typeof agents[0] }) => (
-  <section className="container mx-auto px-2 sm:px-4 pb-16">
-    <div className="bg-white/90 rounded-3xl shadow-2xl px-4 sm:px-8 py-8 sm:py-10 max-w-xl mx-auto flex flex-col items-start mt-4 w-full">
+  <section className="container mx-auto px-4 pb-16">
+    <div className="bg-white/90 rounded-3xl shadow-2xl px-8 py-10 max-w-xl mx-auto flex flex-col items-center mt-4">
       <div className="bg-green-500 p-3 rounded-full mb-4">
         <MessageCircle className="w-8 h-8 text-white" />
       </div>
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-green-800 mb-3 text-left w-full">Live Support - {agent.name}</h2>
-      <p className="text-base sm:text-lg text-gray-700 mb-2 text-left w-full">
+      <h2 className="text-3xl font-extrabold text-green-800 mb-3">Live Support - {agent.name}</h2>
+      <p className="text-lg text-gray-700 mb-2 text-center">
         Get instant help from <b>{agent.name}</b>, our expert support agent! Talk, ask questions, and solve all your WhatsApp or Wa Me 91 usage issues in real time. Just click and connect—<span className="text-green-700 font-bold">no waiting, no hassle!</span>
       </p>
-      <p className="text-sm sm:text-base text-gray-600 mb-2 text-left w-full">
+      <p className="text-base text-gray-600 mb-2 text-center">
         <b>What you get:</b> <br />
         - Fast, personalized solutions <br />
         - Step-by-step guidance for any issue <br />
         - Hindi and English language support<br />
         - 100% privacy guarantee
       </p>
-      <ul className="text-sm text-gray-500 text-left mb-4 list-disc ml-4 w-full">
+      <ul className="text-sm text-gray-500 text-left mb-4 list-disc ml-4">
         <li>Receive troubleshooting for errors</li>
         <li>Learn best tips to use Wa Me 91 features</li>
         <li>Get help with privacy or safety concerns</li>
         <li>Connect from anywhere, 24x7 support available</li>
       </ul>
-      <span className="bg-green-100 text-green-800 rounded px-3 py-1 font-semibold text-xs mb-3 text-left w-full">
+      <span className="bg-green-100 text-green-800 rounded px-3 py-1 font-semibold text-xs mb-3">
         Speak with {agent.name} now!
       </span>
-      <div className="mt-2 text-gray-400 text-xs text-left w-full">Your chats are fully confidential &ndash; support you can trust.</div>
+      <div className="mt-2 text-gray-400 text-xs">Your chats are fully confidential &ndash; support you can trust.</div>
     </div>
   </section>
 );
 
 const AgentLiveSupport = () => {
   const { id } = useParams();
-  // If invalid id, fallback to agent 2 (index 1)
-  let agentIndex = 1;
+  // If invalid id, fallback to 1
+  let agentIndex = 0;
   if (id && !isNaN(Number(id))) {
     const candidateIndex = Number(id) - 1;
-    // Only allow 2-10
-    if (candidateIndex >= 1 && candidateIndex < agents.length) {
+    if (candidateIndex >= 0 && candidateIndex < agents.length) {
       agentIndex = candidateIndex;
     }
   }
   const agent = agents[agentIndex];
   const navigate = useNavigate();
 
-  // Compute the next agent, loop back after 10 (to 2, not 1)
-  let nextId = agentIndex + 2;
-  if (nextId > agents.length) nextId = 2;
+  // Compute the next agent, loop back after 10
+  const nextId = agentIndex < agents.length - 1 ? agentIndex + 2 : 1;
   const nextAgentPath = `/live-support/agent-${nextId}`;
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
       <Header />
-      <section className="container mx-auto px-2 sm:px-4 mb-8">
+      {/* Agent Video Card */}
+      <section className="container mx-auto px-4 mb-8">
         <VideoCallCard
           profileImage={agent.profileImage}
           name={agent.name}
@@ -233,10 +233,10 @@ const AgentLiveSupport = () => {
           nextLink={nextAgentPath}
           variant="default"
           stats={agent.stats}
-          // Next par sahi agent page par le jaye (loop 10 ke baad 2 pe)
           nextButtonHandler={() => navigate(nextAgentPath)}
         />
       </section>
+      {/* Enhanced Live Support Content */}
       <LiveSupportContent agent={agent} />
       <Footer />
     </div>

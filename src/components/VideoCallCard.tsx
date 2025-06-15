@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -34,9 +33,9 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   };
 
   return (
-    <div className="max-w-xl w-full mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-5 sm:p-8 flex flex-col items-start gap-5 border border-green-200 min-h-[320px]">
-      <div className="flex flex-col items-start w-full">
-        <div className="relative mb-2 self-center">
+    <div className="max-w-xl mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 border border-green-200 min-h-[320px] w-full sm:p-8 p-4">
+      <div className="flex flex-col items-center w-full">
+        <div className="relative mb-2">
           <img
             src={profileImage}
             alt={`${name} Profile`}
@@ -50,23 +49,23 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
             <i className="fas fa-video text-white text-xs"></i>
           </div>
         </div>
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1 text-left w-full">{name}</h3>
-        <p className="text-base text-green-700 flex items-center justify-start mb-2 w-full">
+        <h3 className="text-2xl font-bold text-gray-800 mb-1">{name}</h3>
+        <p className="text-base text-green-700 flex items-center justify-center mb-2">
           <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
           {status}
         </p>
         {stats && (
-          <div className="flex flex-wrap gap-3 text-xs text-gray-600 mb-2 w-full">
+          <div className="flex flex-wrap gap-3 text-xs text-gray-600 mb-2 justify-center">
             <span>Sessions: <span className="font-bold">{stats.activeSessions}</span></span>
             <span>✨ {stats.satisfactionRate}</span>
             <span>⏱ {stats.responseTime}</span>
           </div>
         )}
       </div>
-      <div className="flex w-full flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+      <div className="flex w-full flex-col sm:flex-row gap-3">
         <button
           onClick={handleRoute}
-          className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4 mb-2 sm:mb-0"
+          className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg flex items-center justify-center text-sm font-semibold transition-all duration-200 shadow-md whitespace-nowrap sm:text-base sm:py-3 sm:px-4"
         >
           <i className="fas fa-video mr-2"></i>
           Start Video Call

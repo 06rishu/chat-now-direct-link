@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,7 +20,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/live-support" element={<LiveSupport />} />
-          {/* Remove Agent 1: Now only /live-support is Natasha/Agent 1 */}
+          {/* Agent-specific live support routes */}
+          <Route path="/live-support/agent-1" element={<AgentLiveSupport />} />
           <Route path="/live-support/agent-2" element={<AgentLiveSupport />} />
           <Route path="/live-support/agent-3" element={<AgentLiveSupport />} />
           <Route path="/live-support/agent-4" element={<AgentLiveSupport />} />
