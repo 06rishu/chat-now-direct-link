@@ -16,6 +16,7 @@ import Agent7 from "./pages/agents/Agent7";
 import Agent8 from "./pages/agents/Agent8";
 import Agent9 from "./pages/agents/Agent9";
 import Agent10 from "./pages/agents/Agent10";
+import WaMe91 from "./pages/wa-me-91";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,8 @@ const App = () => (
           <Route path="/live-support/agent-8" element={<Agent8 />} />
           <Route path="/live-support/agent-9" element={<Agent9 />} />
           <Route path="/live-support/agent-10" element={<Agent10 />} />
+          {/* wa-me-91 page */}
+          <Route path="/wa-me-91" element={<WaMe91 />} />
           {/* CATCH-ALL */}
           <Route path="*" element={<NotFound />} />
         </Routes>
