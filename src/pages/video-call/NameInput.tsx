@@ -2,9 +2,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Video, ArrowLeft, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 const NameInput = () => {
   const navigate = useNavigate();
@@ -66,8 +63,8 @@ const NameInput = () => {
               What's your name?
             </h2>
             <div>
-              <Label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</Label>
-              <Input 
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <input 
                 type="text" 
                 id="name" 
                 value={name}
@@ -78,16 +75,16 @@ const NameInput = () => {
               />
               {nameError && <p className="mt-1 text-sm text-red-600 animate-pulse">{nameError}</p>}
             </div>
-            <Button
+            <button
               onClick={handleNext}
               disabled={!!nameError || !name}
-              className={`w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-xl mt-4 flex items-center justify-center transition-all duration-300 ${
-                !!nameError || !name ? 'opacity-75 cursor-not-allowed' : 'animate-pulse hover:shadow-xl hover:scale-105'
+              className={`w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 mt-4 flex items-center justify-center ${
+                !!nameError || !name ? 'opacity-75 cursor-not-allowed' : 'animate-pulse'
               }`}
             >
               Next: Mobile Number
               <ArrowLeft className="w-5 h-5 ml-2 rotate-180" />
-            </Button>
+            </button>
           </div>
         </div>
       </div>

@@ -2,9 +2,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Video, ArrowLeft, Smartphone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 const MobileInput = () => {
   const navigate = useNavigate();
@@ -72,8 +69,8 @@ const MobileInput = () => {
               Enter your mobile number
             </h2>
             <div className="mb-6">
-              <Label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</Label>
-              <Input 
+              <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
+              <input 
                 type="tel" 
                 id="mobile" 
                 value={mobile}
@@ -85,18 +82,18 @@ const MobileInput = () => {
               />
               {mobileError && <p className="mt-1 text-sm text-red-600 animate-pulse">{mobileError}</p>}
             </div>
-            <Button
+            <button
               onClick={handleNext}
               disabled={isSubmitting || !!mobileError || !mobile}
-              className={`w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                isSubmitting || !!mobileError || !mobile ? 'opacity-75 cursor-not-allowed' : 'animate-pulse hover:shadow-xl hover:scale-105'
+              className={`w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 flex items-center justify-center ${
+                isSubmitting || !!mobileError || !mobile ? 'opacity-75 cursor-not-allowed' : 'animate-pulse'
               }`}
             >
               {isSubmitting && (
                 <div className="animate-spin -ml-1 mr-3 h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
               )}
               <span>{isSubmitting ? 'Submitting...' : 'Submit'}</span>
-            </Button>
+            </button>
           </div>
         </div>
       </div>

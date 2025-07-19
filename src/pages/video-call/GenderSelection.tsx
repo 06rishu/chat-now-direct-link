@@ -10,7 +10,7 @@ const GenderSelection = () => {
   };
 
   const handleBack = () => {
-    navigate("/video-call");
+    navigate("/video-call/welcome");
   };
 
   return (
@@ -39,15 +39,15 @@ const GenderSelection = () => {
               Select your gender
             </h2>
             <div className="grid grid-cols-2 gap-3">
-              <button onClick={handleNext} className="option-btn bg-pink-100 hover:bg-pink-200 text-pink-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-pink-100 hover:bg-pink-200 text-pink-800">
                 <Heart className="w-8 h-8 mb-2" />
                 Female
               </button>
-              <button onClick={handleNext} className="option-btn bg-blue-100 hover:bg-blue-200 text-blue-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-blue-100 hover:bg-blue-200 text-blue-800">
                 <User className="w-8 h-8 mb-2" />
                 Male
               </button>
-              <button onClick={handleNext} className="option-btn bg-purple-100 hover:bg-purple-200 text-purple-800 col-span-2 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-purple-100 hover:bg-purple-200 text-purple-800 col-span-2">
                 <User className="w-8 h-8 mb-2" />
                 Other
               </button>

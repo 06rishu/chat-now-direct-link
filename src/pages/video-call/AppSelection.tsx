@@ -39,19 +39,19 @@ const AppSelection = () => {
               Choose video call app
             </h2>
             <div className="grid grid-cols-2 gap-3">
-              <button onClick={handleNext} className="option-btn bg-green-100 hover:bg-green-200 text-green-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-green-100 hover:bg-green-200 text-green-800">
                 <div className="w-8 h-8 mb-2 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">W</div>
                 WhatsApp
               </button>
-              <button onClick={handleNext} className="option-btn bg-pink-100 hover:bg-pink-200 text-pink-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-pink-100 hover:bg-pink-200 text-pink-800">
                 <div className="w-8 h-8 mb-2 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold">I</div>
                 Instagram
               </button>
-              <button onClick={handleNext} className="option-btn bg-blue-100 hover:bg-blue-200 text-blue-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-blue-100 hover:bg-blue-200 text-blue-800">
                 <div className="w-8 h-8 mb-2 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">F</div>
                 Facebook
               </button>
-              <button onClick={handleNext} className="option-btn bg-sky-100 hover:bg-sky-200 text-sky-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-sky-100 hover:bg-sky-200 text-sky-800">
                 <div className="w-8 h-8 mb-2 bg-sky-500 rounded-full flex items-center justify-center text-white font-bold">T</div>
                 Telegram
               </button>

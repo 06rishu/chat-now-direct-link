@@ -39,27 +39,27 @@ const CategorySelection = () => {
               Select a category
             </h2>
             <div className="grid grid-cols-2 gap-3">
-              <button onClick={handleNext} className="option-btn bg-rose-100 hover:bg-rose-200 text-rose-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-rose-100 hover:bg-rose-200 text-rose-800">
                 <User className="w-6 h-6 mb-2" />
                 Girls
               </button>
-              <button onClick={handleNext} className="option-btn bg-amber-100 hover:bg-amber-200 text-amber-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-amber-100 hover:bg-amber-200 text-amber-800">
                 <User className="w-6 h-6 mb-2" />
                 Bhabhi
               </button>
-              <button onClick={handleNext} className="option-btn bg-emerald-100 hover:bg-emerald-200 text-emerald-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-emerald-100 hover:bg-emerald-200 text-emerald-800">
                 <User className="w-6 h-6 mb-2" />
                 Nibbi
               </button>
-              <button onClick={handleNext} className="option-btn bg-sky-100 hover:bg-sky-200 text-sky-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-sky-100 hover:bg-sky-200 text-sky-800">
                 <User className="w-6 h-6 mb-2" />
                 Boy
               </button>
-              <button onClick={handleNext} className="option-btn bg-violet-100 hover:bg-violet-200 text-violet-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-violet-100 hover:bg-violet-200 text-violet-800">
                 <User className="w-6 h-6 mb-2" />
                 Aunty
               </button>
-              <button onClick={handleNext} className="option-btn bg-indigo-100 hover:bg-indigo-200 text-indigo-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]">
+              <button onClick={handleNext} className="p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-indigo-100 hover:bg-indigo-200 text-indigo-800">
                 <User className="w-6 h-6 mb-2" />
                 Man
               </button>
