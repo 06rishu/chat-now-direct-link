@@ -38,12 +38,19 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
+
     --sidebar-foreground: 240 5.3% 26.1%;
+
     --sidebar-primary: 240 5.9% 10%;
+
     --sidebar-primary-foreground: 0 0% 98%;
+
     --sidebar-accent: 240 4.8% 95.9%;
+
     --sidebar-accent-foreground: 240 5.9% 10%;
+
     --sidebar-border: 220 13% 91%;
+
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,45 +103,23 @@
   }
 }
 
-/* Video Call Specific Styles - Exact match to HTML template */
-.gradient-bg {
-  background: linear-gradient(45deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
-  background-size: 300% 300%;
-  animation: gradient 6s ease infinite;
+/* Custom animations for video call pages */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
-.gradient-bg-red {
-  background: linear-gradient(45deg, #ef4444, #dc2626, #b91c1c, #991b1b, #7f1d1d);
-  background-size: 300% 300%;
-  animation: gradient 6s ease infinite;
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.error-message {
-  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-  20%, 40%, 60%, 80% { transform: translateX(5px); }
-}
-
-/* Custom scrollbar styles */
+/* Custom scrollbar for language selection */
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -152,69 +137,4 @@
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #7c3aed, #db2777);
-}
-
-/* Title bar with back button */
-.title-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-}
-
-.back-btn-title {
-  position: absolute;
-  left: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: white;
-  transition: all 0.2s ease;
-}
-
-.back-btn-title:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-  transform: translateX(-2px);
-}
-
-/* Custom animations for video call pages */
-@keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(10px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
-}
-
-/* Option Buttons (All other selection buttons) */
-.option-btn {
-  @apply p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm;
-  min-height: 80px;
-}
-
-/* Loader Animation */
-.loader {
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #8b5cf6;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
