@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +19,7 @@ import Agent9 from "./pages/agents/Agent9";
 import Agent10 from "./pages/agents/Agent10";
 import WaMe91 from "./pages/wa-me-91";
 import VideoCallPage from "./pages/video-call";
+import ConnectingWhatsApp from "./pages/ConnectingWhatsApp";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +45,8 @@ const App = () => (
           <Route path="/live-support/agent-10" element={<Agent10 />} />
           {/* wa-me-91 page */}
           <Route path="/wa-me-91" element={<WaMe91 />} />
+          {/* connecting-whatsapp page */}
+          <Route path="/connecting-whatsapp" element={<ConnectingWhatsApp />} />
           {/* video-call page */}
           <Route path="/video-call" element={<VideoCallPage />} />
           {/* CATCH-ALL */}
