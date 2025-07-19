@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 
 const WaMe91 = () => {
   const [countryCode, setCountryCode] = useState("91");
   const [mobileNumber, setMobileNumber] = useState("");
   const [message, setMessage] = useState("Hello");
   const [isDetecting, setIsDetecting] = useState(true);
+  const navigate = useNavigate();
 
   // Auto-detect country code using ipwho.is API
   useEffect(() => {
@@ -67,13 +69,23 @@ const WaMe91 = () => {
   const sendWhatsApp = () => {
     if (!validateMobileNumber()) return;
     const url = `whatsapp://send?phone=${countryCode}${mobileNumber}&text=${encodeURIComponent(message)}`;
-    window.open(url);
+    navigate('/connecting-whatsapp', { 
+      state: { 
+        whatsappUrl: url,
+        isBusiness: false 
+      } 
+    });
   };
 
   const sendBusinessWhatsApp = () => {
     if (!validateMobileNumber()) return;
     const url = `https://api.whatsapp.com/send?phone=${countryCode}${mobileNumber}&text=${encodeURIComponent(message)}`;
-    window.open(url);
+    navigate('/connecting-whatsapp', { 
+      state: { 
+        whatsappUrl: url,
+        isBusiness: true 
+      } 
+    });
   };
 
   const handleMobileNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
