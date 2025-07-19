@@ -48,7 +48,7 @@ const ConnectingPage = () => {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden font-sans transition-all duration-300 hover:shadow-xl">
         {/* Header */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-500 p-5 text-white">
-          <div className="flex items-center justify-center relative w-full">
+          <div className="title-container">
             <h1 className="text-2xl font-bold flex items-center">
               <Video className="w-6 h-6 mr-2" />
               Video Call Connect
@@ -64,7 +64,7 @@ const ConnectingPage = () => {
                 Connecting your call...
               </h2>
               <div className="text-4xl font-bold text-purple-600 mb-4">{timeText()}</div>
-              <div className="w-15 h-15 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-4"></div>
+              <div className="loader mx-auto mb-4"></div>
               <p className="text-sm text-purple-500 flex items-center justify-center">
                 <Clock className="w-4 h-4 mr-1" />
                 Please wait while we connect you...
@@ -79,7 +79,7 @@ const ConnectingPage = () => {
                 </p>
                 <button 
                   onClick={reset} 
-                  className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 flex items-center justify-center animate-pulse"
+                  className="w-full gradient-bg-red text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 flex items-center justify-center pulse"
                 >
                   <RefreshCw className="w-5 h-5 mr-2" />
                   Choose Another Person
