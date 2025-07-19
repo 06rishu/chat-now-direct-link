@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Video, Link, Clock, AlertTriangle, RefreshCw } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const ConnectingPage = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const ConnectingPage = () => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const reset = () => {
-    navigate("/video-call/welcome");
+    navigate("/video-call");
   };
 
   const startTimer = () => {
@@ -77,13 +78,13 @@ const ConnectingPage = () => {
                   <AlertTriangle className="w-5 h-5 mr-2" />
                   The person you selected is currently busy and will be available after 30 minutes.
                 </p>
-                <button 
+                <Button 
                   onClick={reset} 
                   className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 flex items-center justify-center animate-pulse"
                 >
                   <RefreshCw className="w-5 h-5 mr-2" />
                   Choose Another Person
-                </button>
+                </Button>
               </div>
             )}
           </div>

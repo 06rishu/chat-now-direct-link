@@ -54,12 +54,12 @@ const LanguageSelection = () => {
               <Languages className="w-6 h-6 mr-2" />
               Choose your preferred language
             </h2>
-            <div className="grid grid-cols-2 gap-3 max-h-64 overflow-y-auto p-2">
+            <div className="grid grid-cols-2 gap-3 max-h-64 overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-purple-300 scrollbar-track-gray-100">
               {languages.map((lang, index) => (
                 <button 
                   key={lang}
                   onClick={handleNext} 
-                  className={`p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px] bg-${languageColors[index]}-100 hover:bg-${languageColors[index]}-200 text-${languageColors[index]}-800`}
+                  className={`option-btn bg-${languageColors[index]}-100 hover:bg-${languageColors[index]}-200 text-${languageColors[index]}-800 p-4 rounded-full text-center font-medium transition-all duration-300 shadow-md hover:shadow-lg flex flex-col items-center justify-center text-sm min-h-[80px]`}
                 >
                   {lang}
                 </button>
