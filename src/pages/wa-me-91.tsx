@@ -4,15 +4,53 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
+
 const WaMe91 = () => {
   const [countryCode, setCountryCode] = useState("91");
   const [mobileNumber, setMobileNumber] = useState("");
   const [message, setMessage] = useState("Hello");
+  const [isDetecting, setIsDetecting] = useState(true);
 
-  // Auto-detect and set default country code to India
+  // Auto-detect country code using ipwho.is API
   useEffect(() => {
-    setCountryCode("91");
+    const detectCountry = async () => {
+      try {
+        setIsDetecting(true);
+        const response = await fetch('https://ipwho.is/');
+        const data = await response.json();
+        
+        if (data.success && data.country_code) {
+          const detectedCountryCode = getPhoneCodeFromCountry(data.country_code);
+          if (detectedCountryCode) {
+            setCountryCode(detectedCountryCode);
+            console.log(`Country detected: ${data.country} (${data.country_code}) - Phone code: +${detectedCountryCode}`);
+          }
+        }
+      } catch (error) {
+        console.log('Country detection failed, using default India (+91)');
+      } finally {
+        setIsDetecting(false);
+      }
+    };
+
+    detectCountry();
   }, []);
+
+  // Map country code to phone code
+  const getPhoneCodeFromCountry = (countryCode: string) => {
+    const countryToPhoneMap: { [key: string]: string } = {
+      'US': '1', 'CA': '1', 'AE': '971', 'RU': '7', 'PK': '92', 'GB': '44',
+      'DE': '49', 'AU': '61', 'FR': '33', 'IT': '39', 'ES': '34', 'BR': '55',
+      'JP': '81', 'KR': '82', 'CN': '86', 'IN': '91', 'SA': '966', 'EG': '20',
+      'ZA': '27', 'NG': '234', 'MX': '52', 'AR': '54', 'TR': '90', 'NL': '31',
+      'SE': '46', 'NO': '47', 'DK': '45', 'FI': '358', 'BE': '32', 'CH': '41',
+      'AT': '43', 'PL': '48', 'PT': '351', 'GR': '30', 'IL': '972', 'TH': '66',
+      'MY': '60', 'SG': '65', 'ID': '62', 'PH': '63', 'VN': '84', 'BD': '880'
+    };
+    
+    return countryToPhoneMap[countryCode] || null;
+  };
+
   const validateMobileNumber = () => {
     const regex = /^\d{7,20}$/;
     if (!regex.test(mobileNumber)) {
@@ -25,20 +63,24 @@ const WaMe91 = () => {
     }
     return true;
   };
+
   const sendWhatsApp = () => {
     if (!validateMobileNumber()) return;
     const url = `whatsapp://send?phone=${countryCode}${mobileNumber}&text=${encodeURIComponent(message)}`;
     window.open(url);
   };
+
   const sendBusinessWhatsApp = () => {
     if (!validateMobileNumber()) return;
     const url = `https://api.whatsapp.com/send?phone=${countryCode}${mobileNumber}&text=${encodeURIComponent(message)}`;
     window.open(url);
   };
+
   const handleMobileNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9]/g, '').slice(0, 20);
     setMobileNumber(value);
   };
+
   const countryOptions = [{
     code: "93",
     name: "Afghanistan (+93)",
@@ -976,7 +1018,9 @@ const WaMe91 = () => {
     name: "Zimbabwe (+263)",
     countryCode: "ZW"
   }];
-  return <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
       <Header />
       <main className="flex-grow flex flex-col items-center justify-center px-4 py-8">
         <div className="w-full max-w-md mx-auto">
@@ -990,12 +1034,20 @@ const WaMe91 = () => {
           <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
             <div>
               <label htmlFor="countryCode" className="block text-sm font-medium text-gray-700 mb-2">
-                Country Code:
+                Country Code: {isDetecting && <span className="text-xs text-green-600">(Auto-detecting...)</span>}
               </label>
-              <select id="countryCode" value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                {countryOptions.map(country => <option key={country.countryCode} value={country.code}>
+              <select 
+                id="countryCode" 
+                value={countryCode} 
+                onChange={e => setCountryCode(e.target.value)} 
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                disabled={isDetecting}
+              >
+                {countryOptions.map(country => (
+                  <option key={country.countryCode} value={country.code}>
                     {country.name}
-                  </option>)}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -1003,30 +1055,70 @@ const WaMe91 = () => {
               <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-700 mb-2">
                 Mobile Number:
               </label>
-              <input type="text" id="mobileNumber" value={mobileNumber} onChange={handleMobileNumberChange} placeholder="Enter mobile number" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+              <input 
+                type="text" 
+                id="mobileNumber" 
+                value={mobileNumber} 
+                onChange={handleMobileNumberChange} 
+                placeholder="Enter mobile number" 
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" 
+              />
             </div>
 
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                 Message:
               </label>
-              <Textarea id="message" value={message} onChange={e => setMessage(e.target.value)} rows={5} className="resize-vertical" />
+              <Textarea 
+                id="message" 
+                value={message} 
+                onChange={e => setMessage(e.target.value)} 
+                rows={5} 
+                className="resize-vertical" 
+              />
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button onClick={sendWhatsApp} className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors">
+              <Button 
+                onClick={sendWhatsApp} 
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              >
                 Send via WhatsApp
               </Button>
-              <Button onClick={sendBusinessWhatsApp} variant="outline" className="flex-1 border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-md transition-colors">
+              <Button 
+                onClick={sendBusinessWhatsApp} 
+                variant="outline" 
+                className="flex-1 border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-md transition-colors"
+              >
                 WhatsApp Business
               </Button>
             </div>
           </div>
 
-          
+          {/* Privacy Note */}
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-blue-800">Privacy Notice</h3>
+                <div className="mt-2 text-sm text-blue-700">
+                  <p>
+                    🔒 <strong>We don't store any numbers or collect your data.</strong> Your privacy is our priority. 
+                    This service only helps you create WhatsApp links without storing any information on our servers.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default WaMe91;
