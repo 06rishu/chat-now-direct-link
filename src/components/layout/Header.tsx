@@ -1,3 +1,4 @@
+
 import { MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -6,6 +7,10 @@ import NavLinks from "../NavLinks";
 const Header = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <header className="container mx-auto px-4 py-6 relative">
@@ -60,7 +65,7 @@ const Header = () => {
         className={`fixed inset-0 bg-black/40 z-20 transition-opacity ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        onClick={() => setMenuOpen(false)}
+        onClick={closeMenu}
       />
       <nav
         className={`fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-30 transform ${
@@ -73,7 +78,7 @@ const Header = () => {
           {/* Close btn */}
           <button
             className="self-end mb-8 p-2 text-gray-400 hover:text-green-600"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
             aria-label="Close navigation"
           >
             <svg className="w-7 h-7" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -84,7 +89,7 @@ const Header = () => {
           <NavLinks
             direction="vertical"
             className="space-y-2"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
           />
         </div>
       </nav>
