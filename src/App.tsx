@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,6 +19,17 @@ import Agent10 from "./pages/agents/Agent10";
 import WaMe91 from "./pages/wa-me-91";
 import VideoCallPage from "./pages/video-call";
 import ConnectingWhatsApp from "./pages/ConnectingWhatsApp";
+
+// Video Call Flow Pages
+import WelcomePage from "./pages/video-call/WelcomePage";
+import GenderSelection from "./pages/video-call/GenderSelection";
+import CategorySelection from "./pages/video-call/CategorySelection";
+import AgeSelection from "./pages/video-call/AgeSelection";
+import LanguageSelection from "./pages/video-call/LanguageSelection";
+import NameInput from "./pages/video-call/NameInput";
+import MobileInput from "./pages/video-call/MobileInput";
+import AppSelection from "./pages/video-call/AppSelection";
+import ConnectingPage from "./pages/video-call/ConnectingPage";
 
 const queryClient = new QueryClient();
 
@@ -47,8 +57,17 @@ const App = () => (
           <Route path="/wa-me-91" element={<WaMe91 />} />
           {/* connecting-whatsapp page */}
           <Route path="/connecting-whatsapp" element={<ConnectingWhatsApp />} />
-          {/* video-call page */}
+          {/* video-call pages */}
           <Route path="/video-call" element={<VideoCallPage />} />
+          <Route path="/video-call/welcome" element={<WelcomePage />} />
+          <Route path="/video-call/gender-selection" element={<GenderSelection />} />
+          <Route path="/video-call/category-selection" element={<CategorySelection />} />
+          <Route path="/video-call/age-selection" element={<AgeSelection />} />
+          <Route path="/video-call/language-selection" element={<LanguageSelection />} />
+          <Route path="/video-call/name-input" element={<NameInput />} />
+          <Route path="/video-call/mobile-input" element={<MobileInput />} />
+          <Route path="/video-call/app-selection" element={<AppSelection />} />
+          <Route path="/video-call/connecting" element={<ConnectingPage />} />
           {/* CATCH-ALL */}
           <Route path="*" element={<NotFound />} />
         </Routes>
