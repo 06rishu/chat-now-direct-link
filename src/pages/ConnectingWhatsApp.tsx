@@ -9,17 +9,22 @@ const ConnectingWhatsApp = () => {
   const [countdown, setCountdown] = useState(10);
   const [isConnected, setIsConnected] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState("");
+  const [appType, setAppType] = useState("WhatsApp");
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Get WhatsApp URL from location state
+    // Get WhatsApp URL and app type from location state
     const url = location.state?.whatsappUrl;
+    const type = location.state?.appType || "WhatsApp";
+    
     if (!url) {
       navigate("/wa-me-91");
       return;
     }
+    
     setWhatsappUrl(url);
+    setAppType(type);
 
     // Start countdown
     const timer = setInterval(() => {
@@ -27,8 +32,7 @@ const ConnectingWhatsApp = () => {
         if (prev <= 1) {
           clearInterval(timer);
           setIsConnected(true);
-          // Auto-open WhatsApp after 10 seconds
-          window.open(url, '_blank');
+          // Don't auto-open WhatsApp anymore
           return 0;
         }
         return prev - 1;
@@ -54,7 +58,7 @@ const ConnectingWhatsApp = () => {
                   <div className="w-16 h-16 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
                 <h1 className="text-2xl font-bold text-green-700 mb-4">
-                  Connecting WhatsApp
+                  Connecting {appType}
                 </h1>
                 <p className="text-lg text-gray-600 mb-4">
                   Please wait...
@@ -63,7 +67,7 @@ const ConnectingWhatsApp = () => {
                   {countdown}
                 </div>
                 <p className="text-sm text-gray-500">
-                  WhatsApp will open automatically
+                  {appType} will be ready to open
                 </p>
               </>
             ) : (
@@ -79,13 +83,13 @@ const ConnectingWhatsApp = () => {
                   Connected!
                 </h1>
                 <p className="text-lg text-gray-600 mb-6">
-                  WhatsApp should have opened automatically
+                  Ready to open {appType}
                 </p>
                 <Button 
                   onClick={openWhatsApp}
                   className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-md transition-colors"
                 >
-                  Open WhatsApp Again
+                  Open {appType}
                 </Button>
                 <Button 
                   onClick={() => navigate("/wa-me-91")}

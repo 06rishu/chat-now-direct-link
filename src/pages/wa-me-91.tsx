@@ -69,13 +69,13 @@ const WaMe91 = () => {
   const sendWhatsApp = () => {
     if (!validateMobileNumber()) return;
     const url = `whatsapp://send?phone=${countryCode}${mobileNumber}&text=${encodeURIComponent(message)}`;
-    navigate('/connecting-whatsapp', { state: { whatsappUrl: url } });
+    navigate('/connecting-whatsapp', { state: { whatsappUrl: url, appType: 'WhatsApp' } });
   };
 
   const sendBusinessWhatsApp = () => {
     if (!validateMobileNumber()) return;
     const url = `https://api.whatsapp.com/send?phone=${countryCode}${mobileNumber}&text=${encodeURIComponent(message)}`;
-    navigate('/connecting-whatsapp', { state: { whatsappUrl: url } });
+    navigate('/connecting-whatsapp', { state: { whatsappUrl: url, appType: 'WhatsApp Business' } });
   };
 
   const handleMobileNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
