@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "@/components/layout/Header";
@@ -13,6 +14,7 @@ const ConnectingWhatsApp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Get WhatsApp URL and app type from location state
     const url = location.state?.whatsappUrl;
     const type = location.state?.appType || "WhatsApp";
     
@@ -24,11 +26,13 @@ const ConnectingWhatsApp = () => {
     setWhatsappUrl(url);
     setAppType(type);
 
+    // Start countdown
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
           setIsConnected(true);
+          // Don't auto-open WhatsApp anymore
           return 0;
         }
         return prev - 1;
@@ -45,7 +49,7 @@ const ConnectingWhatsApp = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
       <Header />
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 py-8">
         <div className="w-full max-w-md mx-auto text-center">
           <div className="bg-white rounded-lg shadow-lg p-8 space-y-6">
             {!isConnected ? (

@@ -1,58 +1,110 @@
 
 import { MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavLinks from "../NavLinks";
 
 const Header = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Make header sticky after scrolling 400px (past video call card)
+      const scrollPosition = window.scrollY;
+      setIsSticky(scrollPosition > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="bg-white border-b border-gray-200 shadow-sm">
+    <header className={`${isSticky ? 'fixed' : 'relative'} top-0 z-50 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm transition-all duration-300`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo, clickable */}
           <button
             type="button"
-            className="flex items-center focus:outline-none"
+            className="flex items-center space-x-2 focus:outline-none"
             onClick={() => navigate("/")}
             aria-label="Go to homepage"
           >
-            <div className="bg-green-500 p-2 rounded-full mr-3">
-              <MessageCircle className="w-5 h-5 text-white" />
+            <div className="bg-green-500 p-2 rounded-full transition-transform duration-300 hover:scale-110 shadow-lg">
+              <MessageCircle className="w-6 h-6 text-white" />
             </div>
-            <span className="text-lg font-semibold text-gray-900">Wa Me 91</span>
+            <span className="text-xl font-bold text-gray-800">Wa Me 91</span>
           </button>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <NavLinks />
+          
+          {/* Desktop Nav */}
+          <nav className="hidden md:block">
+            <NavLinks className="items-center" direction="horizontal" />
+          </nav>
+          
+          {/* Mobile Hamburger */}
+          <div className="md:hidden flex items-center">
+            <button
+              className={`relative z-30 p-2 rounded-full bg-green-100 hover:bg-green-200 focus:outline-none transition`}
+              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              {/* Hamburger icon animation */}
+              <span className="sr-only">Toggle navigation</span>
+              <div className="w-6 h-6 relative flex flex-col justify-center items-center">
+                <span
+                  className={`block absolute h-0.5 w-6 bg-green-700 rounded transition-all duration-300 ${
+                    menuOpen ? "rotate-45 top-2.5" : "-translate-y-2"
+                  }`}
+                />
+                <span
+                  className={`block absolute h-0.5 w-6 bg-green-700 rounded transition-all duration-300 ${
+                    menuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block absolute h-0.5 w-6 bg-green-700 rounded transition-all duration-300 ${
+                    menuOpen ? "-rotate-45 -top-2.5" : "translate-y-2"
+                  }`}
+                />
+              </div>
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden focus:outline-none"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-6 flex flex-col justify-center items-center">
-              <span className={`bg-gray-600 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${menuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
-              <span className={`bg-gray-600 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${menuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`bg-gray-600 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${menuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`}></span>
-            </div>
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {menuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
-            <div className="pt-4">
-              <NavLinks />
-            </div>
+        
+        {/* Mobile Nav Drawer */}
+        <div
+          className={`fixed inset-0 bg-black/40 z-20 transition-opacity ${
+            menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setMenuOpen(false)}
+        />
+        <nav
+          className={`fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-30 transform ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
+          } transition-transform duration-300 animate-fade-in`}
+          style={{ transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)" }}
+          aria-label="Mobile navigation"
+        >
+          <div className="p-6 pt-8 flex flex-col h-full">
+            {/* Close btn */}
+            <button
+              className="self-end mb-8 p-2 text-gray-400 hover:text-green-600"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close navigation"
+            >
+              <svg className="w-7 h-7" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+            <NavLinks
+              direction="vertical"
+              className="space-y-2"
+              onClick={() => setMenuOpen(false)}
+            />
           </div>
-        )}
+        </nav>
       </div>
     </header>
   );

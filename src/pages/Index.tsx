@@ -1,3 +1,4 @@
+
 import { MessageCircle, Phone, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -107,10 +108,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
+      {/* Header */}
       <Header />
       <main className="flex-1">
         {/* Video Call Card 1 - Natasha, Hero Style */}
-        <section className="container mx-auto px-4 py-8">
+        <section className="container mx-auto px-4 mb-8">
           <VideoCallCard
             profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face"
             name="Natasha"
@@ -181,7 +183,7 @@ const Index = () => {
         </section>
 
         {/* Second Video Call Card - Natasha */}
-        <section className="container mx-auto px-4 py-8">
+        <section className="container mx-auto px-4 mb-8">
           <VideoCallCard
             profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
             name="Natasha"
@@ -235,7 +237,7 @@ const Index = () => {
         </section>
 
         {/* Third Video Call Card - Premium */}
-        <section className="container mx-auto px-4 py-8">
+        <section className="container mx-auto px-4 mb-8">
           <VideoCallCard
             profileImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
             name="Sarah Wilson"
@@ -310,9 +312,11 @@ const Index = () => {
           </div>
         </section>
       </main>
+      {/* Footer */}
       <Footer />
     </div>
   );
 };
 
 export default Index;
+
