@@ -14,20 +14,22 @@ const Agent1 = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-green-100">
       <Header />
-      <section className="container mx-auto px-4 mb-8">
-        <VideoCallCard
-          profileImage={agent.profileImage}
-          name={agent.name}
-          status="Expert Support 24/7"
-          videoCallLink="#"
-          nextLink="/live-support/agent-2"
-          variant="default"
-          stats={agent.stats}
-          nextButtonHandler={() => navigate("/live-support/agent-2")}
-          // Previous button intentionally omitted for Agent 1 page
-        />
-      </section>
-      <LiveSupportContent agent={agent} />
+      <div className="pt-4"> {/* Added padding top for spacing */}
+        <section className="container mx-auto px-4 mb-8">
+          <VideoCallCard
+            profileImage={agent.profileImage}
+            name={agent.name}
+            status="Expert Support 24/7"
+            videoCallLink="#"
+            nextLink="/live-support/agent-2"
+            variant="default"
+            stats={agent.stats}
+            nextButtonHandler={() => navigate("/live-support/agent-2")}
+            // Previous button intentionally omitted for Agent 1 page
+          />
+        </section>
+        <LiveSupportContent agent={agent} />
+      </div>
       <Footer />
     </div>
   );

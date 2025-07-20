@@ -40,7 +40,7 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
     });
 
   return (
-    <div className="max-w-xl mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 border border-green-200 min-h-[320px] w-full sm:p-8 p-4 relative">
+    <div className="max-w-xl mx-auto bg-gradient-to-br from-green-200 via-green-100 to-blue-100 rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 border border-green-200 min-h-[320px] w-full sm:p-8 p-4 relative mt-8 mb-8">
       {/* Previous Button - Top Left */}
       {prevButtonHandler && (
         <button
@@ -102,4 +102,3 @@ const VideoCallCard: React.FC<VideoCallCardProps> = ({
   );
 };
 export default VideoCallCard;
-
