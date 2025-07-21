@@ -1,4 +1,3 @@
-
 import { MessageCircle, Phone, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,6 +12,8 @@ const Index = () => {
   const navigate = useNavigate();
 
   const handleStartChat = () => {
+    // Scroll to top first, then navigate
+    window.scrollTo({ top: 0, behavior: 'instant' });
     navigate("/wa-me-91");
   };
 
@@ -319,4 +320,3 @@ const Index = () => {
 };
 
 export default Index;
-
