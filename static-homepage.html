@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wa Me 91 - WhatsApp Chat Without Saving Number</title>
+    <meta name="description" content="The easiest way in India to chat directly on any WhatsApp number without saving contacts. Just enter the number and start chatting instantly!">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-50': '#f0fdf4',
+                        'green-100': '#dcfce7',
+                        'green-500': '#22c55e',
+                        'green-600': '#16a34a',
+                        'green-800': '#166534',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .hover-scale {
+            transition: transform 0.2s;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-green-100 min-h-screen">
+    <!-- Header -->
+    <header id="header" class="relative bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <button onclick="goHome()" class="flex items-center space-x-2 focus:outline-none">
+                    <div class="bg-green-500 p-2 rounded-full transition-transform duration-300 hover:scale-110 shadow-lg">
+                        <i class="fas fa-comment text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">Wa Me 91</span>
+                </button>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:block">
+                    <ul class="flex flex-row gap-x-6 items-center">
+                        <li><a href="#" class="text-green-600 font-medium">Home</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium">About Us</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium">Live Support</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Hamburger -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-full bg-green-100 hover:bg-green-200 focus:outline-none">
+                        <div class="w-6 h-6 relative flex flex-col justify-center items-center">
+                            <span class="block absolute h-0.5 w-6 bg-green-700 rounded transition-all duration-300" style="transform: translateY(-8px)"></span>
+                            <span class="block absolute h-0.5 w-6 bg-green-700 rounded transition-all duration-300"></span>
+                            <span class="block absolute h-0.5 w-6 bg-green-700 rounded transition-all duration-300" style="transform: translateY(8px)"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-20 opacity-0 pointer-events-none transition-opacity"></div>
+        <nav id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-30">
+            <div class="p-6 pt-8 flex flex-col h-full">
+                <button id="close-menu" class="self-end mb-8 p-2 text-gray-400 hover:text-green-600">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <ul class="flex flex-col gap-y-4 space-y-2">
+                    <li><a href="#" class="text-green-600 font-medium block">Home</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium block">About Us</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium block">Contact Us</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium block">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium block">Terms & Conditions</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium block">Live Support</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <!-- Video Call Card 1 -->
+        <section class="container mx-auto px-4 mb-8">
+            <div class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 text-white shadow-xl">
+                <div class="flex items-center space-x-4">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face" 
+                         alt="Natasha" class="w-16 h-16 rounded-full border-2 border-white">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold">Natasha</h3>
+                        <p class="text-purple-100">Expert Support 24/7</p>
+                        <div class="flex items-center space-x-4 mt-2 text-sm">
+                            <span><i class="fas fa-users mr-1"></i>2945 active</span>
+                            <span><i class="fas fa-star mr-1"></i>4.9 (1317 reviews)</span>
+                            <span><i class="fas fa-clock mr-1"></i>&lt; 30 seconds</span>
+                        </div>
+                    </div>
+                    <button class="bg-white text-purple-500 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-video mr-2"></i>Video Call
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-8 sm:py-16">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <i class="fas fa-bolt mr-2"></i>
+                        No Contact Saving Required
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                        WhatsApp Chat
+                        <span class="block text-green-600">Without Saving Number</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        The easiest way in India to chat directly on any WhatsApp number without saving contacts. 
+                        Just enter the number and start chatting instantly!
+                    </p>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="mb-12">
+                    <button onclick="startChat()" class="bg-green-500 hover:bg-green-600 text-white text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                        <i class="fas fa-comment mr-3"></i>
+                        Start Chatting Now
+                    </button>
+                    <p class="text-sm text-gray-500 mt-3">
+                        Click to see demo of how it works
+                    </p>
+                </div>
+
+                <!-- WhatsApp Preview -->
+                <div class="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md mx-auto">
+                    <div class="bg-green-500 rounded-t-2xl px-4 py-3 text-white flex items-center">
+                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3">
+                            <i class="fab fa-whatsapp text-green-500 text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold">WhatsApp Chat</div>
+                            <div class="text-xs opacity-90">online</div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 h-32 flex items-center justify-center">
+                        <div class="bg-green-100 text-green-800 px-4 py-2 rounded-lg text-sm">
+                            <i class="fas fa-comments mr-2"></i>Chat directly without saving number! <i class="fas fa-comments"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Second Video Call Card -->
+        <section class="container mx-auto px-4 mb-8">
+            <div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-6 text-white shadow-xl">
+                <div class="flex items-center space-x-4">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
+                         alt="Natasha" class="w-12 h-12 rounded-full border-2 border-white">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold">Natasha</h3>
+                        <p class="text-blue-100">Live Support 24/7</p>
+                    </div>
+                    <button class="bg-white text-blue-500 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-video mr-2"></i>Call
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="bg-white py-12 sm:py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 text-center">
+                        Introducing Wa Me 91: A Revolutionary WhatsApp Web Tool for Effortless Chatting without Saving Numbers
+                    </h2>
+                    
+                    <div class="prose prose-lg max-w-none text-gray-600 space-y-6">
+                        <h3 class="text-2xl font-semibold text-gray-900">Introduction</h3>
+                        <p>In today's fast-paced digital world, instant messaging has become an integral part of our lives, and WhatsApp is undeniably one of the most popular platforms for connecting with friends, family, and businesses. However, one aspect of WhatsApp that can be frustrating is the need to save a contact's number before initiating a chat. Enter Wa Me 91, an innovative WhatsApp web tool that allows you to chat without saving numbers. In this article, we will explore the features and benefits of Wa Me 91 and how it simplifies communication for millions of WhatsApp users.</p>
+
+                        <h3 class="text-2xl font-semibold text-gray-900">The Need for a WhatsApp Web Tool</h3>
+                        <p>With over two billion active users worldwide, WhatsApp has transformed the way we communicate. However, the traditional process of saving a contact's number before initiating a conversation can be time-consuming and inconvenient. Many users may want to send a quick message without cluttering their contact list or worrying about privacy concerns. That's where Wa Me 91 comes to the rescue. It offers a hassle-free solution to start chatting instantly, eliminating the need to save numbers.</p>
+
+                        <h3 class="text-2xl font-semibold text-gray-900">Understanding Wa Me 91</h3>
+                        <p>Wa Me 91 is a user-friendly WhatsApp web tool that simplifies the process of initiating chats without saving numbers. The tool provides a seamless experience by breaking down the process into three simple steps: selecting the country code, entering the mobile number, and optionally pre-filling a custom message. Once these details are entered, users can click to chat via WhatsApp or WhatsApp Business, depending on their requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="bg-gray-50 py-12 sm:py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Key Features of Wa Me 91</h2>
+                    
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-mouse text-green-600 text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Easy-to-use interface</h3>
+                            <p class="text-gray-600">Wa Me 91 offers a clean and intuitive interface that requires no technical expertise. Users can quickly navigate through the tool and initiate chats in a matter of seconds.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-shield-alt text-blue-600 text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Privacy protection</h3>
+                            <p class="text-gray-600">One of the significant advantages of using Wa Me 91 is that it maintains the privacy of users. Since numbers are not saved, there is no risk of inadvertently sharing personal information.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-cogs text-purple-600 text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Customization options</h3>
+                            <p class="text-gray-600">With the option to pre-fill a custom message, users can personalize their conversations right from the start. This feature is especially useful for businesses.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-globe text-yellow-600 text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Compatibility</h3>
+                            <p class="text-gray-600">Wa Me 91 is compatible with all major web browsers, including Chrome, Firefox, Safari, and Microsoft Edge. It also supports both WhatsApp and WhatsApp Business.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-clock text-red-600 text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Time-saving convenience</h3>
+                            <p class="text-gray-600">By eliminating the need to save numbers, Wa Me 91 streamlines the communication process. Users can save time and effort, especially when engaging with new contacts.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-heart text-indigo-600 text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Benefits for All</h3>
+                            <p class="text-gray-600">Wa Me 91 offers numerous benefits to individuals and businesses alike, providing a quick and efficient way to connect without the hassle of saving numbers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Third Video Call Card -->
+        <section class="container mx-auto px-4 mb-8">
+            <div class="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl p-6 text-white shadow-xl border-2 border-yellow-300">
+                <div class="flex items-center space-x-4">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
+                         alt="Sarah Wilson" class="w-12 h-12 rounded-full border-2 border-white">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold">Sarah Wilson</h3>
+                        <p class="text-yellow-100">Premium Expert Support</p>
+                        <div class="flex items-center space-x-4 mt-1 text-xs">
+                            <span><i class="fas fa-users mr-1"></i>2847 active</span>
+                            <span><i class="fas fa-star mr-1"></i>4.9 (1247)</span>
+                        </div>
+                    </div>
+                    <button class="bg-white text-orange-500 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-video mr-2"></i>Premium Call
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-white py-12 sm:py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Frequently Asked Questions</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Q1: What is Wa Me 91?</h3>
+                            <p class="text-gray-600">A1: Wa Me 91 is a WhatsApp web tool that allows you to initiate chats without the need to save the contact's number in your phone.</p>
+                        </div>
+
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Q2: How does Wa Me 91 work?</h3>
+                            <p class="text-gray-600">A2: Wa Me 91 simplifies the process of starting a conversation on WhatsApp by breaking it down into three simple steps: selecting the country code, entering the mobile number, and optionally pre-filling a custom message.</p>
+                        </div>
+
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Q3: Is Wa Me 91 compatible with all web browsers?</h3>
+                            <p class="text-gray-600">A3: Yes, Wa Me 91 is compatible with all major web browsers, including Chrome, Firefox, Safari, and Microsoft Edge.</p>
+                        </div>
+
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Q4: Does Wa Me 91 support WhatsApp Business?</h3>
+                            <p class="text-gray-600">A4: Yes, Wa Me 91 supports both WhatsApp and WhatsApp Business, giving users the flexibility to choose the appropriate platform for their communication needs.</p>
+                        </div>
+
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Q5: Is it safe to use Wa Me 91?</h3>
+                            <p class="text-gray-600">A5: Yes, using Wa Me 91 is safe. It does not store or save any contact numbers, ensuring the privacy and security of users' personal information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section class="bg-gray-50 py-12 sm:py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Conclusion</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                        Wa Me 91 revolutionizes the way we use WhatsApp by providing a convenient solution to chat without saving numbers. With its user-friendly interface, privacy protection, customization options, compatibility, and time-saving convenience, Wa Me 91 empowers individuals and businesses to communicate effortlessly. Whether you want to connect with friends, reach out to local services, or enhance your business's customer engagement, Wa Me 91 is the go-to tool for hassle-free WhatsApp conversations. Try it today and experience a new level of efficiency and simplicity in your messaging experience.
+                    </p>
+                    <button onclick="startChat()" class="bg-green-500 hover:bg-green-600 text-white text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                        <i class="fas fa-rocket mr-3"></i>
+                        Try Wa Me 91 Now
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-green-600 py-12 sm:py-16">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+                    Try It Now!
+                </h2>
+                <p class="text-green-100 mb-8 text-lg">
+                    Start WhatsApp chat with just one click
+                </p>
+                <button onclick="startChat()" class="bg-white text-green-600 hover:bg-gray-100 text-lg px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover-scale">
+                    <i class="fas fa-play mr-3"></i>
+                    See Demo - Start Chat Now
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center mb-4">
+                <button onclick="goHome()" class="flex items-center focus:outline-none">
+                    <div class="bg-green-500 p-2 rounded-full mr-3">
+                        <i class="fas fa-comment text-white text-sm"></i>
+                    </div>
+                    <span class="text-lg font-semibold">Wa Me 91</span>
+                </button>
+            </div>
+
+            <nav class="mb-4">
+                <ul class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-gray-300 text-sm font-medium">
+                    <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms & Conditions</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Live Support</a></li>
+                </ul>
+            </nav>
+
+            <p class="text-gray-400 text-sm mb-4">
+                The easiest way to WhatsApp direct chat in India
+            </p>
+            <div class="text-xs text-gray-500 border-t border-gray-700 pt-4">
+                <p class="mb-2">
+                    <i class="fas fa-flag mr-2"></i>
+                    <i class="fas fa-heart text-red-500 mx-1"></i>
+                    2024 Wa Me 91. Made in India <i class="fas fa-flag"></i>
+                </p>
+                <p class="text-yellow-300">
+                    <strong>Note:</strong> This is not affiliated with WhatsApp Inc. This is an independent tool.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const closeMenuBtn = document.getElementById('close-menu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            mobileOverlay.style.opacity = '1';
+            mobileOverlay.style.pointerEvents = 'auto';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            mobileOverlay.style.opacity = '0';
+            mobileOverlay.style.pointerEvents = 'none';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Sticky header functionality
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                header.classList.add('sticky-header');
+            } else {
+                header.classList.remove('sticky-header');
+            }
+        });
+
+        // Navigation functions
+        function goHome() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startChat() {
+            // You can replace this with actual navigation to wa-me-91 page
+            alert('Redirecting to WhatsApp chat tool...');
+            // window.location.href = '/wa-me-91.html';
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
