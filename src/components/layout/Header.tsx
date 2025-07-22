@@ -72,15 +72,15 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Mobile Nav Drawer */}
+        {/* Mobile Nav Drawer - Only visible on mobile when menu is open */}
         <div
-          className={`fixed inset-0 bg-black/40 z-20 transition-opacity ${
+          className={`md:hidden fixed inset-0 bg-black/40 z-20 transition-opacity ${
             menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
           onClick={() => setMenuOpen(false)}
         />
         <nav
-          className={`fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-30 transform ${
+          className={`md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-30 transform ${
             menuOpen ? "translate-x-0" : "translate-x-full"
           } transition-transform duration-300 animate-fade-in`}
           style={{ transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)" }}
